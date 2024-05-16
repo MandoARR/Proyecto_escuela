@@ -1,12 +1,19 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Alumnos_portal } from './components/Alumnos_portal'
-import ClasesE from './components/Clases'
+import Login from './sections/login'
+import { Admin } from './sections/admin'
+import { ProteccionRouter } from './components/ProteccionRouter'
 
 function App() {
   return (
     <>
-      <Alumnos_portal/>
-      <ClasesE></ClasesE>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route element={<ProteccionRouter/>}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/other-view" element={<h1>Otra Vista</h1>} />
+        </Route>
+      </Routes>
     </>
   )
 }

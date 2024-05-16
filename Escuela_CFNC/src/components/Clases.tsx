@@ -13,7 +13,7 @@ export default function ClasesE() {
           component="img"
           height="140"
           image="https://png.pngtree.com/png-clipart/20200709/original/pngtree-modern-guitar-music-logo-png-image_3570998.jpg"
-          alt="Violin"
+          alt="Guitarra"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -21,9 +21,9 @@ export default function ClasesE() {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <ul>
-                <li>Status</li>
-                <li>Dia de pago</li>
-                <li>Costo</li>
+              <li>Status</li>
+              <li>Dia de pago</li>
+              <li>Costo</li>
             </ul>
           </Typography>
         </CardContent>
