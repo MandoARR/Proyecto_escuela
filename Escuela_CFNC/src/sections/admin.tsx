@@ -1,8 +1,14 @@
+import { useLoginStore } from "../store/useLoginStore"
 
+export function Admin() {
+    const { user } = useLoginStore()
 
-export function Admin(){
-       return(
-        <h1>ADMIN View</h1>
+    return (
+        <>
+            <h1>ADMIN View</h1>
+            <h2>Bienvenido: {user}</h2>
+        </>
+
     )
-    
+
 }

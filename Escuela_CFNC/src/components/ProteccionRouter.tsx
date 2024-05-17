@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom"
+import { useLoginStore } from "../store/useLoginStore"
 
 export function ProteccionRouter(){
-    const user = false
+    const {isLoggedIn} = useLoginStore()
 
-    if(!user){
+    if(!isLoggedIn){
         return <Navigate to= "/"/>
     }
 

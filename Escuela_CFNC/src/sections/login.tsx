@@ -11,22 +11,30 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useLoginStore } from '../store/useLoginStore';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
+export default function Login() {
+    const navigate = useNavigate()
+    const { login } = useLoginStore()
+
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const {email, password} = Object.fromEntries(data)
-       
+        const { email, password } = Object.fromEntries(data)
+
         //Validar con el servicio
         //
         console.log({
             email,
             password
         });
+        login(email as string)
+        navigate("/admin")
     };
 
     return (
@@ -61,7 +69,7 @@ export default function SignInSide() {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            Iniciar Sesion
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
@@ -69,7 +77,7 @@ export default function SignInSide() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Address"
+                                label="Correo Electronico"
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
@@ -79,14 +87,10 @@ export default function SignInSide() {
                                 required
                                 fullWidth
                                 name="password"
-                                label="Password"
+                                label="Contraseña"
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-                            />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
                             />
                             <Button
                                 type="submit"
@@ -94,7 +98,7 @@ export default function SignInSide() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                Sign In
+                                Iniciar Sesion
                             </Button>
                             <Grid container>
                             </Grid>
