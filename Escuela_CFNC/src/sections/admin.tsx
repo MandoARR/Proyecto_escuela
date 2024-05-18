@@ -1,3 +1,4 @@
+import Barra from "../components/Barra"
 import { useLoginStore } from "../store/useLoginStore"
 
 export function Admin() {
@@ -5,10 +6,9 @@ export function Admin() {
 
     return (
         <>
+            <Barra/>
             <h1>ADMIN View</h1>
             <h2>Bienvenido: {user}</h2>
         </>
-
     )
-
 }
