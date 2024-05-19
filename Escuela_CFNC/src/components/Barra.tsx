@@ -13,8 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES'];
+const settings = ['Logout'];
 
 function Barra() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -99,7 +99,7 @@ function Barra() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#app-bar-with-responsive-menu" //COMO CAMBIAR EL LOGOTIPO ?
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -111,7 +111,7 @@ function Barra() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MadMusic
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
