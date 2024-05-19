@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useLoginStore } from '../store/useLoginStore';
 
+
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
@@ -47,7 +48,7 @@ export default function Login() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(https://wallpaperaccess.com/full/689404.jpg)',
+                        backgroundImage: 'url(https://wallpapercave.com/wp/wp9549637.jpg)',
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
