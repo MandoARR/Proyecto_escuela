@@ -11,7 +11,7 @@ export function Alumnos_lista() {
             .then(data => {
                 setAlumnos(data); 
             })
-            .catch(error => console.error('Error fetching data:', error));
+            .catch(error => console.error('Error fetching:', error));
     }, []);
 
     return (

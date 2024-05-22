@@ -12,8 +12,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useLoginStore } from '../store/useLoginStore';
 
-
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Login() {
@@ -25,6 +23,9 @@ export default function Login() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const { email, password } = Object.fromEntries(data)
+        if(!email || !password){
+            return
+        }
 
         //Validar con el servicio
         console.log({
