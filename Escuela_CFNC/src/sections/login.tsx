@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -14,7 +12,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useLoginStore } from '../store/useLoginStore';
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Login() {
@@ -26,9 +23,11 @@ export default function Login() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const { email, password } = Object.fromEntries(data)
+        if(!email || !password){
+            return
+        }
 
         //Validar con el servicio
-        //
         console.log({
             email,
             password
@@ -47,7 +46,7 @@ export default function Login() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(https://wallpaperaccess.com/full/689404.jpg)',
+                        backgroundImage: 'url(https://wallpapercave.com/wp/wp9549637.jpg)',
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
