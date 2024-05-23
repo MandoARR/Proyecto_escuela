@@ -13,14 +13,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useLoginStore } from '../store/useLoginStore';
+import { Link } from 'react-router-dom';
 
 const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES'];
 
 function Barra() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  
-  const { logout } = useLoginStore() 
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+
+  const { logout } = useLoginStore();
 
   const handleLogout = () => {
     logout()
@@ -28,18 +29,19 @@ function Barra() {
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
+  }
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-  };
+  }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
+  }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
+  }
 
   return (
     <AppBar position="static">
@@ -95,7 +97,11 @@ function Barra() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    <Link to={`/${page.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      {page}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -105,7 +111,7 @@ function Barra() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu" //COMO CAMBIAR EL LOGOTIPO ?
+            href="#app-bar-with-responsive-menu" //COMO CAMBIAR EL LOGOTIPO ?"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -125,6 +131,8 @@ function Barra() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                component={Link}
+                to={`/${page.toLowerCase()}`}
               >
                 {page}
               </Button>
@@ -153,14 +161,15 @@ function Barra() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem onClick={handleLogout}>
-                  <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
+              <MenuItem onClick={handleLogout}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
+
 export default Barra;

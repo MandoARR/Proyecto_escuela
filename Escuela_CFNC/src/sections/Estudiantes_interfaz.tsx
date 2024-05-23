@@ -1,42 +1,16 @@
-import { useEffect, useState } from "react"
-import { getStudents } from "../../services/students-service"
-import { IEstudiantes } from "./IEstudiantes"
-import { Box, Button } from "@mui/joy"
-import { useNavigate } from "react-router-dom"
+import { Alumnos_lista } from "../components/Alumnos_lista";
+import Barra from "../components/Barra";
+import { useLoginStore } from "../store/useLoginStore";
 
-export function Estudiantes() {
-
-    const [students, setStudents] = useState<[IEstudiantes] | null>([])
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = async () => {
-        const data = await getStudents()
-        setStudents(data)
-    }
-
-    const handleAgregarClick = () => {
-        navigate('/agregar')
-    }
-
-
+export function Estudiantes_interfaz() {
+    const { user } = useLoginStore();
 
     return (
         <>
-            <Box alignItems="center">
-                <ul>
-                    {students?.map((st) => (
-                        <li key={st.id}>{st.nombre}</li>
-                    ))}
-                </ul>
-                <Button onClick={handleAgregarClick}>Agregar Alumno</Button>
-            </Box>
-            
-
-
+            <Barra />
+            <h1>Interdaz del Administrador</h1>
+            <h2>Bienvenido: {user}</h2>
+            <Alumnos_lista/>
         </>
     )
 }
