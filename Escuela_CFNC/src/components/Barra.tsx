@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useLoginStore } from '../store/useLoginStore';
 import { Link } from 'react-router-dom';
 
-const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES'];
+const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'pruebas'];
 
 function Barra() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)

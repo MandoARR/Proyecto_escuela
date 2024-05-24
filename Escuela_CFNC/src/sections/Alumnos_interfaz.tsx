@@ -1,4 +1,4 @@
-import ClasesE from "./Clases_portal";
+import ClasesE from "./Clases_interfaz";
 
 export function Alumnos_portal() {
     return (
