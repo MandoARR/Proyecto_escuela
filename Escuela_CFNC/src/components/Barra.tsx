@@ -98,7 +98,7 @@ function Barra() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${page.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Link to={`/admin/${page}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                       {page}
                     </Link>
                   </Typography>
@@ -132,7 +132,7 @@ function Barra() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 component={Link}
-                to={`/${page.toLowerCase()}`}
+                to={`/admin/${page}`}
               >
                 {page}
               </Button>

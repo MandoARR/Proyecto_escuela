@@ -8,7 +8,7 @@ export function Estudiantes_interfaz() {
     return (
         <>
             <Barra />
-            <h1>Interdaz del Administrador</h1>
+            <h1>Interfaz del Administrador</h1>
             <h2>Bienvenido: {user}</h2>
             <Alumnos_lista/>
         </>
