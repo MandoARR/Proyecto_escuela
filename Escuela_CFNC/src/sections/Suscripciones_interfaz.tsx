@@ -1,6 +1,6 @@
 import Barra from "../components/Barra";
 
-export function Suscripciones_portal() {
+export function Suscripciones_interfaz() {
     return (
         <>
             <Barra />

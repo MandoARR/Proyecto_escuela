@@ -5,10 +5,11 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Barra from '../components/Barra';
 
-export default function Clases_portal() {
+export default function Clases_interfaz() {
   return (
     <>
       <Barra />
+      <br></br>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia

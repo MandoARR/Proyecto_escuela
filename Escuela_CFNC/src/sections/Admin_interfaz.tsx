@@ -1,7 +1,7 @@
 import Barra from "../components/Barra"
 import { useLoginStore } from "../store/useLoginStore"
 
-export function Admin_portal() {
+export function Admin_interfaz() {
     const { user } = useLoginStore()
 
     return (

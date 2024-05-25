@@ -1,6 +1,6 @@
 import ClasesE from "./Clases_interfaz";
 
-export function Alumnos_portal() {
+export function Alumnos_interfaz() {
     return (
         <>
             <div>
