@@ -1,13 +1,20 @@
-import ClasesE from "./Clases_interfaz";
+import { Alumnos_lista } from "../components/Alumnos_Estudiante/Alumnos_lista";
+import Barra from "../components/Barra";
+import { Form_alumnos } from "../components/Alumnos_Estudiante/Form_alumnos";
 
 export function Alumnos_interfaz() {
     return (
         <>
-            <div>
-                <h1>Nombre Apellido</h1>
-                <h2>ID - 12</h2>
-                <ClasesE/>
-            </div>
+            <Barra />
+            <table>
+                <td>
+                    <Alumnos_lista />
+                </td>
+                <td></td>
+                <td>
+                    <Form_alumnos/>
+                </td>
+            </table>
         </>
     )
 }

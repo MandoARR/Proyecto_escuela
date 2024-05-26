@@ -1,8 +1,7 @@
 import { useState } from "react"
-import Barra from "./Barra"
-import { AgregarEstudiante } from "./Alumnos_Estudiante/AgregarEstudiantes"
+import { AgregarEstudiante } from "./AgregarEstudiantes"
 
-export function Pruebas() {
+export function Form_alumnos() {
     const [banner, setBanner] = useState<boolean>(false)
 
     const handleNew = () => {
@@ -15,13 +14,12 @@ export function Pruebas() {
 
     return (
         <>
-            <Barra />
-            <h1>Componente de Pruebas</h1>
             <section>
                 {banner === true ? <div><AgregarEstudiante /></div> : null}
                 <br></br>
-                <button onClick={handleNew}>Nuevo</button><a> </a>
-                <button onClick={handleCancel}>Cancelar</button>
+                {banner === false ? <button onClick={handleNew}>Nuevo</button>: null}
+                <a> </a>
+                {banner == true ? <button onClick={handleCancel}>Cancelar</button>: null}
             </section>
 
         </>

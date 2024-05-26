@@ -1,16 +1,13 @@
-import { Alumnos_lista } from "../components/Alumnos_lista";
-import Barra from "../components/Barra";
-import { useLoginStore } from "../store/useLoginStore";
+import { Clases_estudiante } from "../components/Clases/Clases_estudiante";
 
-export function Estudiantes_interfaz() {
-    const { user } = useLoginStore();
-
+export function Estudiante_interfaz() {
     return (
         <>
-            <Barra />
-            <h1>Interfaz del Administrador</h1>
-            <h2>Bienvenido: {user}</h2>
-            <Alumnos_lista/>
+            <div>
+                <h1>Nombre Apellido</h1>
+                <h2>ID - 12</h2>
+                <Clases_estudiante/>
+            </div>
         </>
     )
 }

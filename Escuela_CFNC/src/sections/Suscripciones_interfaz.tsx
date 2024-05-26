@@ -5,7 +5,6 @@ export function Suscripciones_interfaz() {
         <>
             <Barra />
             <h1>Suscripciones que saben a Inscripciones</h1>
-            
         </>
     )
 }
