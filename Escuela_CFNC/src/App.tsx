@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Login from './sections/login'
+import Login from './sections/Login'
 import { Admin_portal } from './sections/Admin_portal'
 import { ProteccionRouter } from './components/ProteccionRouter'
 import ClasesE from './components/Clases'
