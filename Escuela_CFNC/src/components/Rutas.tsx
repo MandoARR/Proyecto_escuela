@@ -7,6 +7,8 @@ import { Suscripciones_interfaz } from '../sections/Suscripciones_interfaz'
 import Clases_interfaz from '../sections/Clases_interfaz'
 import Login from '../sections/Login'
 import { Estudiante_interfaz } from '../sections/Estudiante_interfaz'
+import Barra from './Barra'
+import { Pagos_interfaz } from '../sections/Pagos_interfaz'
 export function Rutas() {
 
     return (
@@ -18,6 +20,7 @@ export function Rutas() {
                     <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />
                     <Route path="/admin/clases" element={<Clases_interfaz />} />
                     <Route path="/admin/suscripciones" element={<Suscripciones_interfaz />} />
+                    <Route path="/admin/pagos" element={<Pagos_interfaz/>} />
                     <Route path="/admin/pruebas" element={<Pruebas />} />
                 </Route>
                 <Route path="/estudiante" element={<Estudiante_interfaz />} />

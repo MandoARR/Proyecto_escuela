@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useLoginStore } from '../store/useLoginStore';
 import { Link } from 'react-router-dom';
 
-const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'pruebas'];
+const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'PAGOS', 'pruebas'];
 
 function Barra() {
   const { user } = useLoginStore()
