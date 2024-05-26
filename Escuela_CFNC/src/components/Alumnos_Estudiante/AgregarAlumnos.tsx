@@ -5,7 +5,7 @@ import { redirect, useNavigate } from "react-router-dom";
 import { Form_agregar } from "./Form_agregar";
 
 
-export function AgregarEstudiante() {
+export function AgregarAlumnos() {
 
     const [loading, setLoading] = useState<Boolean>(false)
 
@@ -13,7 +13,7 @@ export function AgregarEstudiante() {
     const navigate = useNavigate()
 
 
-    const agregarEstudiante = (body: any) => {
+    const agregarAlumnos = (body: any) => {
         postStudents(body)
     }
 
@@ -26,7 +26,7 @@ export function AgregarEstudiante() {
         const formData = new FormData(e.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
         formJson.uuid = crypto.randomUUID()
-        agregarEstudiante(formJson)
+        agregarAlumnos(formJson)
         setLoading(false)
 
         //navigate('/admin/pagina_de_carga') Preguntar como mandar una pagina con tiempo para fingi que esta cargando

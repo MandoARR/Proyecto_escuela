@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { AgregarEstudiante } from "./AgregarEstudiantes"
+import { AgregarAlumnos } from "./AgregarAlumnos"
 
 export function Form_alumnos() {
     const [banner, setBanner] = useState<boolean>(false)
@@ -15,7 +15,7 @@ export function Form_alumnos() {
     return (
         <>
             <section>
-                {banner === true ? <div><AgregarEstudiante /></div> : null}
+                {banner === true ? <div><AgregarAlumnos /></div> : null}
                 <br></br>
                 {banner === false ? <button onClick={handleNew}>Nuevo</button>: null}
                 <a> </a>

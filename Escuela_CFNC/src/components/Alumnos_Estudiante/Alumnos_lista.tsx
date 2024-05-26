@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const url = "https://backend-subs-control.onrender.com/api/alumno";
-const url_uuid = "https://backend-subs-control.onrender.com/api/alumno?uuid="
 
 {/*EJEMPLO DE URL PARA ELIMINAR ALUMNO, ESTE UUID ES DE UNA CUENTA QUE SE BORRARA EN AUTOMATICO
 https://backend-subs-control.onrender.com/api/alumno?uuid=462e3cd2-5227-4310-bf55-2db76027ca08 */}
