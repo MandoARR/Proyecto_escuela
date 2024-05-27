@@ -8,6 +8,7 @@ import Clases_interfaz from '../sections/Clases_interfaz'
 import Login from '../sections/Login'
 import { Estudiante_interfaz } from '../sections/Estudiante_interfaz'
 import { Pagos_interfaz } from '../sections/Pagos_interfaz'
+import { Form_modificar } from './Alumnos_Estudiante/Form_modificar'
 
 export function Rutas() {
     return (
@@ -18,7 +19,7 @@ export function Rutas() {
                     <Route path="/admin" element={<Admin_interfaz />} />
                     
                     <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />
-                    <Route path="/admin/alumnos/:id" element={<h1>Prueba de Interfaz</h1>} />
+                    <Route path="/admin/alumnos/:id" element={<Form_modificar/>} />
 
                     <Route path="/admin/clases" element={<Clases_interfaz />} />
                     <Route path="/admin/suscripciones" element={<Suscripciones_interfaz />} />
