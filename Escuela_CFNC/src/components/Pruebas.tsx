@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Barra from "./Barra"
 import { AgregarAlumnos } from "./Alumnos_Estudiante/AgregarAlumnos"
 
 export function Pruebas() {
@@ -15,7 +14,6 @@ export function Pruebas() {
 
     return (
         <>
-            <Barra />
             <h1>Componente de Pruebas</h1>
             <section>
                 {banner === true ? <div><AgregarAlumnos /></div> : null}
