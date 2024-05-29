@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { deleteStudent } from '../../services/studets-services';
+import { IEstudiantes } from '../../store/IEstudiantes';
 
 const url = "https://backend-subs-control.onrender.com/api/alumno";
 
 export function Alumnos_lista() {
-    const [alumnos, setAlumnos] = useState([]);
+    const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
 
     useEffect(() => {
         fetch(url)
@@ -16,7 +17,7 @@ export function Alumnos_lista() {
             .catch(error => console.error('Error fetching:', error));
     }, []);
 
-    const handleEliminar = (id: any) => {
+    const handleEliminar = (id: string) => {
         deleteStudent(id)
     }
 
@@ -43,7 +44,7 @@ export function Alumnos_lista() {
                                 }
                             </Link></td>
                             
-                            <td><Link to={'/' + alumno.uuid}>{alumno.uuid}</Link></td>
+                            <td><a href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
                             <td><button onClick={ () => handleEliminar(alumno.id)}>X</button></td>
                         </tr>
                     ))}
