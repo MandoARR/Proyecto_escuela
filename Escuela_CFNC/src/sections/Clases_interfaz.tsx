@@ -1,4 +1,5 @@
 import { Clases_lista } from '../components/Clases/Clases_lista';
+import { Form_clases } from '../components/Clases/Form_Clases';
 
 export default function Clases_interfaz() {
 
@@ -10,7 +11,7 @@ export default function Clases_interfaz() {
         </td>
         <td></td>
         <td>
-          
+          <Form_clases/>
         </td>
       </table>
     </>

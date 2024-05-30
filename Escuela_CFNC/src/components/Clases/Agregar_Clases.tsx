@@ -1,11 +1,10 @@
 import { CircularProgress } from "@mui/material";
 import { useState } from "react";
-import { postStudents } from "../../services/studets-services";
-import { redirect, useNavigate } from "react-router-dom";
+import { postClases } from "../../services/clases-services";
+import { useNavigate } from "react-router-dom";
 import { Form_agregar } from "./Form_agregar";
 
-
-export function Agregar_Clases() {
+export function Agregar_clases() {
 
     const [loading, setLoading] = useState<Boolean>(false)
 
@@ -13,8 +12,8 @@ export function Agregar_Clases() {
     const navigate = useNavigate()
 
 
-    const agregarAlumnos = (body: any) => {
-        postStudents(body)
+    const agregar_clases = (body: any) => {
+        postClases(body)
     }
 
     const handleAgregarDB = (e: any) => {
@@ -25,8 +24,7 @@ export function Agregar_Clases() {
 
         const formData = new FormData(e.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
-        formJson.uuid = crypto.randomUUID()
-        agregarAlumnos(formJson)
+        agregar_clases(formJson)
         setLoading(false)
 
         //navigate('/admin/pagina_de_carga') Preguntar como mandar una pagina con tiempo para fingi que esta cargando

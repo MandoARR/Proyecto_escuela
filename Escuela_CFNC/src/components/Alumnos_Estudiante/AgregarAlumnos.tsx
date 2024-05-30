@@ -1,7 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { postStudents } from "../../services/studets-services";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form_agregar } from "./Form_agregar";
 
 

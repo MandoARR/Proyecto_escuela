@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { getClases } from '../../services/clases-services';
+import { IClases } from '../../store/IClases';
 
 const url = "https://backend-subs-control.onrender.com/api/clase";
 
 export function Clases_lista() {
-    const [clases, setClases] = useState([]);
+    const [clases, setClases] = useState<IClases[]>([]);
 
     useEffect(() => {
         fetch(url)
@@ -13,6 +15,11 @@ export function Clases_lista() {
             })
             .catch(error => console.error('Error fetching:', error));
     }, []);
+
+
+    /*  useEffect(() => {
+            setClases(getClases())
+    }, []);*/
 
     return (
         <div>
@@ -29,7 +36,7 @@ export function Clases_lista() {
                         <tr key={clase.id}>
                             <td>{clase.id}</td>
                             <td>{clase.nombre}</td>
-                            <td>{clase.costo}</td>
+                            <td>${clase.costo}</td>
                         </tr>
                     ))}
                 </tbody>
