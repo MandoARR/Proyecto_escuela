@@ -23,15 +23,15 @@ export async function postStudents(body:IEstudiantes){
 }
 
 export async function putStudents(body : IEstudiantes){
-
+    
 }
 
 {/*EJEMPLO DE URL PARA ELIMINAR ALUMNO, ESTE UUID ES DE UNA CUENTA QUE SE BORRARA EN AUTOMATICO
 https://backend-subs-control.onrender.com/api/alumno
 ?uuid=462e3cd2-5227-4310-bf55-2db76027ca08 */}
 
-export async function deleteStudent(id:Int16Array) {
-    const response = await fetch(BASE_URL + '?id=' + 'id:', {
+export async function deleteStudent(id:string) {
+    const response = await fetch(BASE_URL +'/'+ id, {
         method: 'DELETE',
     })
     const data = await response.json();

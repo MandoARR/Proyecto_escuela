@@ -1,6 +1,8 @@
 import { Clases_estudiante } from "../components/Clases/Clases_estudiante";
 
 export function Estudiante_interfaz() {
+
+    {/*useEffect */}
     return (
         <>
             <div>
