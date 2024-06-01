@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, Input, Stack } from "@mui/material";
 
-export function Form_agregar() {
+export function FormAgregar() {
   return (
     <>
       <Card sx={{ maxWidth: 450 }}>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Agregar_clases } from "./Agregar_Clases"
 
-export function Form_clases() {
+export function FormClases() {
     const [banner, setBanner] = useState<boolean>(false)
 
     const handleNew = () => {

@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { postClases } from "../../services/clases-services";
 import { useNavigate } from "react-router-dom";
-import { Form_agregar } from "./Form_agregar";
+import { Form_agregar } from "./Formgregar";
 
 export function Agregar_clases() {
 
@@ -34,7 +34,7 @@ export function Agregar_clases() {
         <>
             <br></br>
             <form onSubmit={handleAgregarDB}>
-                <Form_agregar />
+                <FormAgregar />
             </form>
             {loading && <CircularProgress />}
         </>

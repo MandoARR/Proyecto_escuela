@@ -4,7 +4,7 @@ import { IClases } from '../../store/IClases';
 
 const url = "https://backend-subs-control.onrender.com/api/clase";
 
-export function Clases_lista() {
+export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
 
     useEffect(() => {
