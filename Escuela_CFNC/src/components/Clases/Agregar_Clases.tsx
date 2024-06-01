@@ -27,7 +27,9 @@ export function Agregar_clases() {
         agregar_clases(formJson)
         setLoading(false)
 
+        //navigate('/admin/pagina_de_carga') Preguntar como mandar una pagina con tiempo para fingi que esta cargando
         navigate('/admin')
+        // cambiar el componente para fingir que esta cargando
     }
 
     return (
