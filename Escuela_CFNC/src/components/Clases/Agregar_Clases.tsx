@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { postClases } from "../../services/clases-services";
 import { useNavigate } from "react-router-dom";
-import { Form_agregar } from "./Formgregar";
+import { FormAgregar } from "./FormAgregar";
 
 export function Agregar_clases() {
 

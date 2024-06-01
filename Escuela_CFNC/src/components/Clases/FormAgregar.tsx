@@ -6,7 +6,7 @@ export function FormAgregar() {
       <Card sx={{ maxWidth: 450 }}>
         <CardContent>
           <Stack spacing={1}>
-            <Input placeholder="Nombre" name="nombre"></Input>
+            <Input placeholder="Nombre de la Clase" name="nombre"></Input>
             <Input placeholder="Costo" name="costo"></Input>
             <Button type="submit">Agregar</Button>
           </Stack>

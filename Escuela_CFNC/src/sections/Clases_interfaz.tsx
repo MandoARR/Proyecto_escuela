@@ -1,5 +1,5 @@
-import { Clases_lista } from '../components/Clases/Clases_lista';
-import { Form_clases } from '../components/Clases/Form_Clases';
+import { ClasesLista } from "../components/Clases/ClasesLista";
+import { FormClases } from "../components/Clases/FormClases";
 
 export default function Clases_interfaz() {
 
@@ -7,11 +7,11 @@ export default function Clases_interfaz() {
     <>
       <table>
         <td>
-          <Clases_lista/>
+          <ClasesLista/>
         </td>
         <td></td>
         <td>
-          <Form_clases/>
+          <FormClases/>
         </td>
       </table>
     </>
