@@ -17,8 +17,11 @@ export function Alumnos_lista() {
             .catch(error => console.error('Error fetching:', error));
     }, []);
 
-    const handleEliminar = (id: string) => {
+    const handleDelete = (id: string) => {
         deleteStudent(id)
+        .then(() => {
+            setAlumnos(alumnos.filter((alumno) => alumno.id != id))
+        })
     }
 
     return (
@@ -45,7 +48,7 @@ export function Alumnos_lista() {
                             </Link></td>
                             
                             <td><a href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
-                            <td><button onClick={ () => handleEliminar(alumno.id)}>X</button></td>
+                            <td><button onClick={ () => handleDelete(alumno.id)}>X</button></td>
                         </tr>
                     ))}
                 </tbody>
