@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import BarraAlumnos from "./BarraAlumnos";
+import { BarraAlumnos } from "./BarraAlumnos";
 
 export function AlumnoLayout(){
     return (
         <div>
-            <BarraAlumnos />
+            <BarraAlumnos/>
             <Outlet />
         </div>
     );
