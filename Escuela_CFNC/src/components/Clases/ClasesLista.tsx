@@ -13,7 +13,6 @@ export function ClasesLista() {
             .then(data => {
                 setClases(data); 
             })
-            .catch(error => console.error('Error fetching:', error));
     }, []);
 
     const handleDelete = (id:string) => {
