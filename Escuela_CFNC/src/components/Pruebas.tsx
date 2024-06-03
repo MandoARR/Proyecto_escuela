@@ -1,27 +1,20 @@
-import { useState } from "react"
-import { AgregarAlumnos } from "./Alumnos_Estudiante/AgregarAlumnos"
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Pruebas() {
-    const [banner, setBanner] = useState<boolean>(false)
+    const navigate = useNavigate();
 
-    const handleNew = () => {
-        setBanner(true)
-    }
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate('/admin/alumnos');
+        }, 1000);
 
-    const handleCancel = () => {
-        setBanner(false)
-    }
+        return () => clearTimeout(timer);
+    }, [navigate]);
 
     return (
         <>
-            <h1>Componente de Pruebas</h1>
-            <section>
-                {banner === true ? <div><AgregarAlumnos /></div> : null}
-                <br></br>
-                <button onClick={handleNew}>Nuevo</button><a> </a>
-                <button onClick={handleCancel}>Cancelar</button>
-            </section>
-
+            <h1>CARGANDO...</h1>
         </>
-    )
+    );
 }

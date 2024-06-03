@@ -49,6 +49,7 @@ export function Alumnos_lista() {
                             
                             <td><a href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
                             <td><button onClick={ () => handleDelete(alumno.id)}>X</button></td>
+                            <td><button onClick={ () => handleUpdate}>Editar</button></td>
                         </tr>
                     ))}
                 </tbody>

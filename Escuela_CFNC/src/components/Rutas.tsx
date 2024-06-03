@@ -19,13 +19,14 @@ export function Rutas() {
                 <Route path="/" element={<Login />} />
                 <Route element={<ProteccionRouter />}>
                     <Route path="/admin" element={<Admin_interfaz />} />
+                    <Route path="/admin/pruebas" element={<Pruebas />} />
                     <Route element={<Admin_layout />}>
                         <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />
 
                         <Route path="/admin/clases" element={<Clases_interfaz />} />
                         <Route path="/admin/suscripciones" element={<Suscripciones_interfaz />} />
                         <Route path="/admin/pagos" element={<Pagos_interfaz />} />
-                        <Route path="/admin/pruebas" element={<Pruebas />} />
+                        
                     </Route>
                     <Route element={<AlumnoLayout/>}>
                         <Route path="/admin/alumnos/:id" element={<Form_modificar />} />
