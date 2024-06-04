@@ -25,6 +25,10 @@ export function Alumnos_lista() {
             })
     }
 
+    const handleIAlumno = (alumno: IEstudiantes) => {
+        navigate('/' + alumno.uuid, { state: { alumno } })
+    }
+
     const handleUpdate = (alumno: IEstudiantes) => {
         navigate('/admin/alumnos/' + alumno.id, { state: { alumno } })
     }
@@ -52,7 +56,7 @@ export function Alumnos_lista() {
                                 }
                             </Link></td>
 
-                            <td><a href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
+                            <td><a onClick={() => handleIAlumno(alumno)} href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
                             <td><button onClick={() => handleDelete(alumno.id)}>X</button></td>
                             <td><button onClick={() => handleUpdate(alumno)}>Actualizar</button></td>
                         </tr>

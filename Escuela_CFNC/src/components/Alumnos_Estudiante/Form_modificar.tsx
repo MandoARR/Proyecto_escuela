@@ -6,15 +6,27 @@ export function Form_modificar() {
     const location = useLocation();
     const { alumno }: { alumno: IEstudiantes } = location.state;
 
+    const handleUpdateuuid = () => {
+        alumno.uuid = crypto.randomUUID() //XD 
+    }
+
     return (
         <>
             <h1>
-                Nombre: {alumno.nombre} 
+                Nombre: {alumno.nombre}
                 {' ' + alumno.apellido + ' '}
-                - {alumno.id}
-            </h1>
+                <button>Update</button>
 
-            <h3>{alumno.uuid}</h3>
+                {alumno.id}
+                <button>Update</button>
+            </h1>
+            <h3>
+                {alumno.uuid}
+                <button
+                    onClick={() => handleUpdateuuid()}>
+                    Update
+                </button>
+            </h3>
             <Link to={'/admin/alumnos'}>Atras</Link>
         </>
     )

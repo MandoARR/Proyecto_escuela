@@ -1,14 +1,23 @@
+import { useLocation } from "react-router-dom";
 import { Clases_estudiante } from "../components/Clases/Clases_estudiante";
+import { IEstudiantes } from "../store/IEstudiantes";
 
 export function Estudiante_interfaz() {
 
-    {/*useEffect */}
+    const location = useLocation();
+    const { alumno }: { alumno: IEstudiantes } = location.state;
+
     return (
         <>
             <div>
-                <h1>Nombre Apellido</h1>
-                <h2>ID - 12</h2>
-                <Clases_estudiante/>
+                <h1>
+                    Nombre: {alumno.nombre}
+                    {' ' + alumno.apellido + ' '}
+                    - {alumno.id}
+                </h1>
+
+                <h3>{alumno.uuid}</h3>
+                <Clases_estudiante />
             </div>
         </>
     )
