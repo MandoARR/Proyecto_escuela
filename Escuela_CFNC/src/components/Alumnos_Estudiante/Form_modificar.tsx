@@ -8,7 +8,7 @@ export function Form_modificar() {
 
     const location = useLocation();
     const { alumno }: { alumno: IEstudiantes } = location.state;
-    const [banner, setBanner] = useState(Boolean)
+    const [banner, setBanner] = useState<Boolean>(false)
 
     const handleUpdateuuid = () => {
         console.log(alumno.uuid)
@@ -20,6 +20,8 @@ export function Form_modificar() {
     const handleUpdateNombre = () => {
         console.log(banner)
         setBanner(true)  
+        console.log(alumno.nombre)
+        console.log(alumno.apellido)
     }
 
     return (
