@@ -6,6 +6,7 @@ const url = "https://backend-subs-control.onrender.com/api/clase";
 
 export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
+    const [selected, setSelected] = useState<IClases | null>(null)
 
     useEffect(() => {
         fetch(url)
@@ -20,6 +21,11 @@ export function ClasesLista() {
         .then(()=> {
             setClases(clases.filter((clase) => clase.id !== id))
         })
+    }
+
+    const handleUpdate = (clase: IClases) => {
+        setSelected(clase)
+        console.log(clase)
     }
 
     /*  useEffect(() => {
@@ -43,6 +49,7 @@ export function ClasesLista() {
                             <td>{clase.nombre}</td>
                             <td>${clase.costo}</td>
                             <td><button onClick={() => handleDelete(clase.id)}> X </button></td>
+                            <td><button onClick={() => handleUpdate(clase)}> Actualizar </button></td>
                         </tr>
                     ))}
                 </tbody>

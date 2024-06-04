@@ -15,6 +15,10 @@ export async function postClases(body:IClases){
     return data
 }
 
+export async function putStudents(body : IEstudiantes){
+
+}
+
 export async function deleteClases(id:string) {
     const response = await fetch(BASE_URL + '/' + id, {
         method: 'DELETE',
