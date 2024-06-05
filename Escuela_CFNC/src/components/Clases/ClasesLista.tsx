@@ -62,7 +62,10 @@ export function ClasesLista() {
             </section>
 
             <section>
-                {banner != true ? null : <FormAgregar/>}
+                {banner != true ? null :
+                    <form onSubmit={handleUpdate}>
+                        <FormAgregar />
+                    </form>}
             </section>
         </>
     );
