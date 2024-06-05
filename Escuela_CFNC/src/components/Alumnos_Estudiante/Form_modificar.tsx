@@ -46,7 +46,7 @@ export function Form_modificar() {
                 </p>
                 <Link to={'/admin/alumnos'}>Atras</Link>
             </div>
-            {banner === true ? <Form_agregar /> : null}
+            {banner === true ? <Form_agregar /> : null} {/*  meter una etiqueta form*/}
         </>
     )
 }
