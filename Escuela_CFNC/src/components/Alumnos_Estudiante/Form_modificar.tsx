@@ -8,7 +8,7 @@ export function Form_modificar() {
 
     const location = useLocation();
     const { alumno }: { alumno: IEstudiantes } = location.state;
-    const [banner, setBanner] = useState<Boolean>(false)
+    const [banner, setBanner] = useState<boolean>(false)
 
     const handleUpdateuuid = () => {
         console.log(alumno.uuid)
@@ -17,11 +17,16 @@ export function Form_modificar() {
         putStudents(alumno)
     }
 
-    const handleUpdateNombre = () => {
-        console.log(banner)
-        setBanner(true)  
+    const handleForm = () => {
         console.log(alumno.nombre)
         console.log(alumno.apellido)
+        setBanner(true)
+    }
+
+    const handleSubmit = () => {
+        console.log(alumno.nombre)
+        console.log(alumno.apellido)
+        putStudents(alumno)
     }
 
     return (
@@ -32,7 +37,7 @@ export function Form_modificar() {
                     {alumno.nombre}
                     {' ' + alumno.apellido + ' '}
                     <button
-                        onClick={() => handleUpdateNombre()}>
+                        onClick={() => handleForm()}>
                         Update
                     </button>
                 </h1>
@@ -46,7 +51,9 @@ export function Form_modificar() {
                 </p>
                 <Link to={'/admin/alumnos'}>Atras</Link>
             </div>
-            {banner === true ? <Form_agregar /> : null} {/*  meter una etiqueta form*/}
+            {banner === true ? <form onSubmit={handleSubmit}>
+                <Form_agregar />
+            </form> : null} 
         </>
     )
 }

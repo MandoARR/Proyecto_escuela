@@ -4,27 +4,21 @@ import { postStudents } from "../../services/studets-services";
 import { useNavigate } from "react-router-dom";
 import { Form_agregar } from "./Form_agregar";
 
-
 export function AgregarAlumnos() {
-
-    const [loading, setLoading] = useState<Boolean>(false)
-
-
-    const navigate = useNavigate()
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const agregarAlumnos = (body: any) => {
         postStudents(body)
     }
 
     const handleAgregarDB = (e: any) => {
-
-        e.preventDefault();
+        e.preventDefault()
 
         setLoading(true)
 
         const formData = new FormData(e.currentTarget);
-        const formJson = Object.fromEntries((formData as any).entries());
+        const formJson = Object.fromEntries((formData as any).entries())
         formJson.uuid = crypto.randomUUID()
         agregarAlumnos(formJson)
         setLoading(false)
@@ -35,7 +29,7 @@ export function AgregarAlumnos() {
 
     return (
         <>
-            <br></br>
+            <br />
             <form onSubmit={handleAgregarDB}>
                 <Form_agregar />
             </form>
