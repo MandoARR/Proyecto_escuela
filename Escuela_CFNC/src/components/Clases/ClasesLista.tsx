@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IClases } from '../../store/IClases';
-import { deleteClases } from '../../services/clases-services';
+import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
 import { Button } from "@mui/material";
 
@@ -9,7 +9,7 @@ const url = "https://backend-subs-control.onrender.com/api/clase";
 
 export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
-    const [selected, setSelected] = useState<IClases | null>(null)
+    const [selectedClase, setSelectedClase] = useState<IClases | null>(null)
     const [showNew, setShowNew] = useState<boolean>(false)
 
     useEffect(() => {
@@ -28,8 +28,8 @@ export function ClasesLista() {
     }
 
     const handleUpdate = (clase: IClases) => {
-        setSelected(clase)
-        console.log(clase)
+        setSelectedClase(clase)
+        setShowNew(true)
     }
 
     const handleSubmit = (e: any) => {
@@ -38,6 +38,12 @@ export function ClasesLista() {
         const nombre = formData.get("nombre")
         const costo = formData.get("costo")
 
+        const bodyData = {
+            id: selectedClase.id,
+            nombre: nombre,
+            costo: costo,
+        }
+        putClases(bodyData)
     }
     /*  useEffect(() => {
             setClases(getClases())
@@ -62,7 +68,7 @@ export function ClasesLista() {
                                     <td>{clase.nombre}</td>
                                     <td>${clase.costo}</td>
                                     <td><button onClick={() => handleDelete(clase.id)}> X </button></td>
-                                    <td><button onClick={() => setShowNew(true)}> Actualizar </button></td>
+                                    <td><button onClick={() => handleUpdate(clase)}> Actualizar </button></td>
                                 </tr>
                             ))}
                         </tbody>

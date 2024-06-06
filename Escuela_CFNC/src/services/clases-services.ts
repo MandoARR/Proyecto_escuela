@@ -15,8 +15,17 @@ export async function postClases(body:IClases){
     return data
 }
 
-export async function putStudents(body : IEstudiantes){
+export async function putClases(body:IClases){
+    const response = await fetch(BASE_URL + '/' + body.id, {
+        method: 'PUT',
+        body : JSON.stringify(body),
+        headers: {
+            "Content-Type": "application/json"
+          }
+    })
+    const data = response.json()
 
+    return data
 }
 
 export async function deleteClases(id:string) {
