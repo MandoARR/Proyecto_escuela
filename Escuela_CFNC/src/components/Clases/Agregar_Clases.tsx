@@ -6,7 +6,7 @@ import { FormAgregar } from "./FormAgregar";
 
 export function Agregar_clases() {
 
-    const [loading, setLoading] = useState<Boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
 
 
     const navigate = useNavigate()

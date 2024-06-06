@@ -1,0 +1,10 @@
+.containerClase {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.SecClases_interfaz{
+    display: flex;
+    align-items: center;
+}

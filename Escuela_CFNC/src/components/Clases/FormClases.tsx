@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Agregar_clases } from "./Agregar_Clases"
+import { Button } from "@mui/material";
 
 export function FormClases() {
     const [banner, setBanner] = useState<boolean>(false)
@@ -19,7 +20,7 @@ export function FormClases() {
                 <br></br>
                 {banner === false ? <button onClick={handleNew}>Nuevo</button>: null}
                 <a> </a>
-                {banner == true ? <button onClick={handleCancel}>Cancelar</button>: null}
+                {banner == true ? <Button onClick={handleCancel}>Cancelar</Button>: null}
             </section>
 
         </>
