@@ -3,6 +3,7 @@ import { IClases } from '../../store/IClases';
 import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
 import { Button } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 
 const url = "https://backend-subs-control.onrender.com/api/clase";
@@ -11,6 +12,7 @@ export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
     const [selectedClase, setSelectedClase] = useState<IClases | null>(null)
     const [showNew, setShowNew] = useState<boolean>(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(url)
@@ -45,9 +47,6 @@ export function ClasesLista() {
         }
         putClases(bodyData)
     }
-    /*  useEffect(() => {
-            setClases(getClases())
-    }, []);*/
 
     return (
         <div className='containerClase'>

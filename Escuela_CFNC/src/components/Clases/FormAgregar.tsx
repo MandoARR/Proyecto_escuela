@@ -8,7 +8,7 @@ export function FormAgregar() {
           <Stack spacing={1}>
             <Input placeholder="Nombre de la Clase" name="nombre"></Input>
             <Input placeholder="Costo" name="costo"></Input>
-            <Button type="submit">Agregar</Button>
+            <Button type="submit">Guardar</Button>
           </Stack>
         </CardContent>
       </Card>
