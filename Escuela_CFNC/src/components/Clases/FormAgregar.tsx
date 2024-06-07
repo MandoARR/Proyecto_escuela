@@ -7,7 +7,13 @@ export function FormAgregar() {
         <CardContent>
           <Stack spacing={1}>
             <Input placeholder="Nombre de la Clase" name="nombre"></Input>
-            <Input placeholder="Costo" name="costo"></Input>
+            <Input
+              inputProps={{
+                inputMode: 'numeric', pattern:'[0-9]*',
+              }}
+              placeholder="Costo"
+              name="costo">
+            </Input>
             <Button type="submit">Guardar</Button>
           </Stack>
         </CardContent>
