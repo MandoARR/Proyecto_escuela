@@ -46,6 +46,7 @@ export function ClasesLista() {
             costo: costo,
         }
         putClases(bodyData)
+        navigate('/admin/pruebas')
     }
 
     return (
