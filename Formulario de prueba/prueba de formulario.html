@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Alumno</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="caja">
+		<form name="form04" id="form04">
+			<table width="200" border="0">
+				<a href="productos_listado.php">Regresar al listado</a>
+				<tr>
+					<td>Codigo</td>
+					<td> <input type="text" name="codigo" id="codigo" /> </td>
+					<br>
+					<br>
+				</tr>
+				<tr>
+					<td>Nombre</td>
+					<td> <input type="text" name="nombre" id="nombre" /> </td>
+					<br>
+					<br>
+				</tr>
+				<tr>
+					<td>Descripcion</td>
+					<td> <input type="text" name="descripcion" id="descripcion" /> </td>
+				</tr>
+				<tr>
+					<td>Precio</td>
+					<td> <input type="text" name="precio" id="precio" /> </td>
+				</tr>
+				<tr>
+					<td>Stock</td>
+					<td> <input type="password" name="stock" id="stock" /> </td>
+				</tr>
+				<tr>
+					<td>Imagen</td>
+					<td> <input type="file" name="imagen" id="imagen" /> </td>
+				</tr>
+				<tr>
+					<td>Categoria</td>
+					<td>
+						<select name="categoria" id="categoria">
+							<option value="0">selecciona</option>
+							<?php
+							for ($i = 0; $i < $num; $i++) {
+								$nombre = mysql_result($res, $i, "nombre");
+
+								echo "<option value='$i'>$nombre</option>";
+							}
+							?>
+						</select><br>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><input onclick="miAlerta();return false;" type="submit" name="send" id="send" value="Registrar" /></td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+</body>
+</html>
