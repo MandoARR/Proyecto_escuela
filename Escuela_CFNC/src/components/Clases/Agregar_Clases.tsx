@@ -3,6 +3,7 @@ import { useState } from "react";
 import { postClases } from "../../services/clases-services";
 import { useNavigate } from "react-router-dom";
 import { FormAgregar } from "./FormAgregar";
+import { IClases } from "../../store/IClases";
 
 export function Agregar_clases() {
 
@@ -12,7 +13,7 @@ export function Agregar_clases() {
     const navigate = useNavigate()
 
 
-    const agregar_clases = (body: any) => {
+    const agregar_clases = (body: IClases) => {
         postClases(body)
     }
 
@@ -23,7 +24,7 @@ export function Agregar_clases() {
         setLoading(true)
 
         const formData = new FormData(e.currentTarget);
-        const formJson = Object.fromEntries((formData as any).entries());
+        const formJson = Object.fromEntries((formData as IClases).entries());
         agregar_clases(formJson)
         setLoading(false)
 
