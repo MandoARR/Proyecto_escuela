@@ -24,7 +24,7 @@ export function Agregar_clases() {
         setLoading(true)
 
         const formData = new FormData(e.currentTarget);
-        const formJson = Object.fromEntries((formData as IClases).entries());
+        const formJson = Object.fromEntries((formData as any).entries());
         agregar_clases(formJson)
         setLoading(false)
 
