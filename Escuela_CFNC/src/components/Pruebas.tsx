@@ -67,7 +67,9 @@ export function Alumnos_lista() {
 }
 
 {/* PREGUNTAS
+
     -Revisa el <Form_Modificar>
     -En <Alumnos_lista> error al enviar los datos a la 
     nueva pestaña del UUID
+
 */}
