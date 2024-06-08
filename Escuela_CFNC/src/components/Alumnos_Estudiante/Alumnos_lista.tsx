@@ -50,8 +50,7 @@ export function Alumnos_lista() {
                     }}
                 >
                     <AspectRatio ratio="1" sx={{ width: 70 }}>
-                        <img
-                            src="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
+                        <img src='https://images.vexels.com/media/users/3/149956/isolated/preview/322cf73650d745b1682ae4aef63dfd0b-m-uacute-sico-tocando-el-saxof-oacute-n-silueta-by-vexels.png'
                         />
                     </AspectRatio>
                     <CardContent>
