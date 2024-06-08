@@ -15,7 +15,7 @@ import { useLoginStore } from '../store/useLoginStore';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { Link } from 'react-router-dom';
 
-const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'PAGOS', 'pruebas'];
+const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'PAGOS'];
 
 function Barra() {
   const { user } = useLoginStore()
