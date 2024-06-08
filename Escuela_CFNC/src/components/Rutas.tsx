@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Admin_interfaz } from '../sections/Admin_interfaz'
 import { ProteccionRouter } from './ProteccionRouter'
-import { ClasesNavigate, Pruebas } from './Clases/ClasesNavigate'
+import { ClasesNavigate } from './Clases/ClasesNavigate'
 import { Alumnos_interfaz } from '../sections/Alumnos_interfaz'
 import { Suscripciones_interfaz } from '../sections/Suscripciones_interfaz'
 import Clases_interfaz from '../sections/Clases_interfaz'
