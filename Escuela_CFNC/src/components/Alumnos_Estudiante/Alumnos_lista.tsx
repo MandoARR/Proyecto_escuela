@@ -5,6 +5,7 @@ import { IEstudiantes } from '../../store/IEstudiantes';
 import { getOneStudent } from '../../sections/Estudiante_interfaz';
 import Card from '@mui/joy/Card';
 import { AspectRatio, CardContent, Chip, Link, Typography } from '@mui/joy';
+import { Button } from '@mui/material';
 
 const url = "https://backend-subs-control.onrender.com/api/alumno"
 
@@ -49,7 +50,7 @@ export function Alumnos_lista() {
                         '&:hover': { boxShadow: 'md', borderColor: 'neutral.outlinedHoverBorder' },
                     }}
                 >
-                    <AspectRatio ratio="1" sx={{ width: 85 }}>
+                    <AspectRatio ratio=".7" sx={{ width: 85 }}>
                         <img src='https://images.vexels.com/media/users/3/149956/isolated/preview/322cf73650d745b1682ae4aef63dfd0b-m-uacute-sico-tocando-el-saxof-oacute-n-silueta-by-vexels.png'
                         />
                     </AspectRatio>
@@ -61,7 +62,7 @@ export function Alumnos_lista() {
                             <Link
                                 overlay
                                 underline="none"
-                                href="#interactive-card"
+                                onClick={() => handleUpdate(alumno)}
                                 sx={{ color: 'text.tertiary' }}
                             >
                                 {alumno.id}
@@ -75,7 +76,9 @@ export function Alumnos_lista() {
                         >
                             {alumno.uuid}
                         </Chip>
+                        <Button onClick={() => handleDelete(alumno.id)}>Eliminar</Button>
                     </CardContent>
+                    
                 </Card>
             ))}
         </div>
