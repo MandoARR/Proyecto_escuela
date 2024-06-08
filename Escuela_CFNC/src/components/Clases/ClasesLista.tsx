@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { IClases } from '../../store/IClases';
 import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
@@ -34,9 +34,9 @@ export function ClasesLista() {
         setShowNew(true)
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
+        const formData = new FormData(e.currentTarget)
         const nombre = formData.get("nombre")
         const costo = formData.get("costo")
 
@@ -46,7 +46,7 @@ export function ClasesLista() {
             costo: costo,
         }
         putClases(bodyData)
-        navigate('/admin/pruebas')
+        navigate('/admin/clasesNav')
     }
 
     return (
