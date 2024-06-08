@@ -10,7 +10,7 @@ const url = "https://backend-subs-control.onrender.com/api/alumno"
 
 export function Alumnos_lista() {
     const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(url)
