@@ -9,6 +9,7 @@ export async function getStudents(){
     return data
 }
 
+
 export async function postStudents(body:IEstudiantes){
     const response = await fetch(BASE_URL,{
         method: 'POST',

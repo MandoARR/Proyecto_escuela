@@ -23,7 +23,7 @@ export function AgregarAlumnos() {
         agregarAlumnos(formJson)
         setLoading(false)
 
-        navigate('/admin/pruebas')
+        navigate('/admin/AlumnosNav')
         // cambiar el componente para fingir que esta cargando
     }
 

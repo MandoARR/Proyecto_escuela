@@ -8,9 +8,10 @@ import Clases_interfaz from '../sections/Clases_interfaz'
 import Login from '../sections/login'
 import { Estudiante_interfaz } from '../sections/Estudiante_interfaz'
 import { Pagos_interfaz } from '../sections/Pagos_interfaz'
-import { Form_modificar } from './Alumnos_Estudiante/Form_modificar'
+import { AlumnosModificar } from './Alumnos_Estudiante/AlumnosModificar'
 import { Admin_layout } from './Admin_layout'
-import { AlumnoLayout } from './Alumnos_Estudiante/AlumnoLayout'
+import { AlumnosLayout } from './Alumnos_Estudiante/AlumnosLayout'
+import { AlumnosNav } from './Alumnos_Estudiante/AlumnosNav'
 
 export function Rutas() {
     return (
@@ -19,17 +20,17 @@ export function Rutas() {
                 <Route path="/" element={<Login />} />
                 <Route element={<ProteccionRouter />}>
                     <Route path="/admin" element={<Admin_interfaz />} />
-                    <Route path="/admin/pruebas" element={<Pruebas />} />
+                    <Route path="/admin/AlumnosNav" element={<AlumnosNav />} />
+
                     <Route element={<Admin_layout />}>
                         <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />
-
                         <Route path="/admin/clases" element={<Clases_interfaz />} />
                         <Route path="/admin/suscripciones" element={<Suscripciones_interfaz />} />
                         <Route path="/admin/pagos" element={<Pagos_interfaz />} />
-                        
                     </Route>
-                    <Route element={<AlumnoLayout/>}>
-                        <Route path="/admin/alumnos/:id" element={<Form_modificar />} />
+
+                    <Route element={<AlumnosLayout />}>
+                        <Route path="/admin/alumnos/:id" element={<AlumnosModificar />} />
                     </Route>
                 </Route>
                 <Route path="/:uuid" element={<Estudiante_interfaz />} />

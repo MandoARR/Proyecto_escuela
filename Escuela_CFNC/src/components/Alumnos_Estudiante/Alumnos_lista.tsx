@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { deleteStudent } from '../../services/studets-services';
 import { IEstudiantes } from '../../store/IEstudiantes';
+import { getOneStudent } from '../../sections/Estudiante_interfaz';
 
-const url = "https://backend-subs-control.onrender.com/api/alumno";
+const url = "https://backend-subs-control.onrender.com/api/alumno"
 
 export function Alumnos_lista() {
     const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
@@ -26,7 +27,7 @@ export function Alumnos_lista() {
     }
 
     const handleIAlumno = (alumno: IEstudiantes) => {
-        navigate('/' + alumno.uuid, { state: { alumno } })
+        getOneStudent(alumno.id)
     }
 
     const handleUpdate = (alumno: IEstudiantes) => {
@@ -46,15 +47,13 @@ export function Alumnos_lista() {
                 <tbody>
                     {alumnos.map((alumno) => (
                         <tr key={alumno.id}>
-                            <td><Link to={'/admin/alumnos/' + alumno.id } >{alumno.id}</Link></td> {/* Como uso handleUpdate? */}
-
-                            <td><Link to={'/admin/alumnos/'
-                                + alumno.id}>{
+                            <td>{alumno.id}</td>
+                            <td>{
                                     alumno.nombre
                                     + ' '
                                     + alumno.apellido
                                 }
-                            </Link></td>
+                            </td>
 
                             <td><a onClick={() => handleIAlumno(alumno)} href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
                             <td><button onClick={() => handleDelete(alumno.id)}>X</button></td>

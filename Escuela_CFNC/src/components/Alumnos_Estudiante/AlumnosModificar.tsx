@@ -4,7 +4,7 @@ import { putStudents } from "../../services/studets-services";
 import { useState } from "react";
 import { Form_agregar } from "./Form_agregar";
 
-export function Form_modificar() {
+export function AlumnosModificar() {
 
     const location = useLocation();
     const { alumno }: { alumno: IEstudiantes } = location.state;
