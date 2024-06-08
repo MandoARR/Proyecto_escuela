@@ -34,7 +34,6 @@ export function Rutas() {
                     </Route>
                 </Route>
                 <Route path="/:uuid" element={<Estudiante_interfaz />} />
-                <Route path="/pruebas" element={<Pruebas />} />
                 <Route path="*" element={<h1>404 Error de Ruta</h1>} />
             </Routes>
         </>
