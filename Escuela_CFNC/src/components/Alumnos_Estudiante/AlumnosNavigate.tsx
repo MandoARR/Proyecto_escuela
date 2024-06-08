@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function AlumnosNav() {
+export function AlumnosNavigate() {
     const navigate = useNavigate();
 
     useEffect(() => {

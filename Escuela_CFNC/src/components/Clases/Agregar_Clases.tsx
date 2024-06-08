@@ -29,7 +29,7 @@ export function Agregar_clases() {
         setLoading(false)
 
         //navigate('/admin/pagina_de_carga') Preguntar como mandar una pagina con tiempo para fingi que esta cargando
-        navigate('/admin/pruebas')
+        navigate('/admin/ClasesNav')
         // cambiar el componente para fingir que esta cargando
     }
 

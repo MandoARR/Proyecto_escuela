@@ -10,7 +10,8 @@ import { Pagos_interfaz } from '../sections/Pagos_interfaz'
 import { AlumnosModificar } from './Alumnos_Estudiante/AlumnosModificar'
 import { Admin_layout } from './Admin_layout'
 import { AlumnosLayout } from './Alumnos_Estudiante/AlumnosLayout'
-import { AlumnosNav } from './Alumnos_Estudiante/AlumnosNav'
+import { AlumnosNavigate } from './Alumnos_Estudiante/AlumnosNavigate'
+import { ClasesNavigate } from './Clases/ClasesNavigate'
 
 export function Rutas() {
     return (
@@ -19,7 +20,8 @@ export function Rutas() {
                 <Route path="/" element={<Login />} />
                 <Route element={<ProteccionRouter />}>
                     <Route path="/admin" element={<Admin_interfaz />} />
-                    <Route path="/admin/AlumnosNav" element={<AlumnosNav />} />
+                    <Route path="/admin/AlumnosNav" element={<AlumnosNavigate/>} />
+                    <Route path="/admin/ClasesNav" element={<ClasesNavigate />} />
 
                     <Route element={<Admin_layout />}>
                         <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />

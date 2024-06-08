@@ -44,12 +44,12 @@ export function Alumnos_lista() {
                     variant="outlined"
                     orientation="horizontal"
                     sx={{
-                        width: 320,
+                        width: 340,
                         marginBottom: '1rem',
                         '&:hover': { boxShadow: 'md', borderColor: 'neutral.outlinedHoverBorder' },
                     }}
                 >
-                    <AspectRatio ratio="1" sx={{ width: 70 }}>
+                    <AspectRatio ratio="1" sx={{ width: 85 }}>
                         <img src='https://images.vexels.com/media/users/3/149956/isolated/preview/322cf73650d745b1682ae4aef63dfd0b-m-uacute-sico-tocando-el-saxof-oacute-n-silueta-by-vexels.png'
                         />
                     </AspectRatio>
