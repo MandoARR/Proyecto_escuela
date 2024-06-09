@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useLoginStore } from '../store/useLoginStore';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { Link } from 'react-router-dom';
+import { orange } from '@mui/material/colors';
 
 const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'PAGOS'];
 
@@ -47,7 +48,7 @@ function Barra() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" style={{background:orange[900]}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <LibraryMusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>

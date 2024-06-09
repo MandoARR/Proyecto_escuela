@@ -23,8 +23,6 @@ export function AlumnosModificar() {
     }
 
     const handleForm = () => {
-        console.log(selectedAlumno.nombre)
-        console.log(selectedAlumno.apellido)
         setShowNew(true)
     }
 
@@ -45,7 +43,7 @@ export function AlumnosModificar() {
         
         setSelectedAlumno(bodyData)
         putStudents(bodyData)
-        setShowNew(true)
+        setShowNew(false)
     }
 
     return (
@@ -71,8 +69,6 @@ export function AlumnosModificar() {
                         </button>
                     </p>
                 </div>
-
-                <Link to={'/admin/alumnos'}>Atras</Link>
 
                 {showNew != false ?
                     <div>

@@ -29,6 +29,7 @@ export function Alumnos_lista() {
             })
     }
 
+    // Se realizara una interfaz para el alumno cuando se le entregue su UUID
     const handleIAlumno = (alumno: IEstudiantes) => {
         getOneStudent(alumno.id)
     }
@@ -51,7 +52,7 @@ export function Alumnos_lista() {
                     }}
                 >
                     <AspectRatio ratio=".7" sx={{ width: 85 }}>
-                        <img src='https://images.vexels.com/media/users/3/149956/isolated/preview/322cf73650d745b1682ae4aef63dfd0b-m-uacute-sico-tocando-el-saxof-oacute-n-silueta-by-vexels.png'
+                        <img src='https://4.bp.blogspot.com/-GTW2sJcVLuc/WL3UQSsTqZI/AAAAAAAAWeo/MQP8gaix9IUXO0sY9KDhZzL_mHVv9zdYwCLcB/s1600/20160401_135211.jpg'
                         />
                     </AspectRatio>
                     <CardContent>

@@ -7,7 +7,7 @@ import Clases_interfaz from '../sections/Clases_interfaz'
 import Login from '../sections/Login'
 import { Estudiante_interfaz } from '../sections/Estudiante_interfaz'
 import { Pagos_interfaz } from '../sections/Pagos_interfaz'
-import { AlumnosModificar } from './Alumnos_Estudiante/AlumnosModificar'
+import { AlumnosDetalles } from './Alumnos_Estudiante/AlumnosDetalles'
 import { Admin_layout } from './Admin_layout'
 import { AlumnosLayout } from './Alumnos_Estudiante/AlumnosLayout'
 import { AlumnosNavigate } from './Alumnos_Estudiante/AlumnosNavigate'
@@ -31,7 +31,7 @@ export function Rutas() {
                     </Route>
 
                     <Route element={<AlumnosLayout />}>
-                        <Route path="/admin/alumnos/:id" element={<AlumnosModificar />} />
+                        <Route path="/admin/alumnos/:id" element={<AlumnosDetalles />} />
                     </Route>
                 </Route>
                 <Route path="/:uuid" element={<Estudiante_interfaz />} />
