@@ -1,6 +1,6 @@
 export interface IEstudiantes {
     id:string,
     nombre:string,
-    apellido:string
+    apellido:string,
     uuid:string
 }

@@ -1,59 +1,90 @@
 import { Link, useLocation } from "react-router-dom";
 import { IEstudiantes } from "../../store/IEstudiantes";
 import { putStudents } from "../../services/studets-services";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Form_agregar } from "./Form_agregar";
+import { Button } from "@mui/material";
 
 export function AlumnosModificar() {
 
     const location = useLocation();
     const { alumno }: { alumno: IEstudiantes } = location.state;
-    const [banner, setBanner] = useState<boolean>(false)
+    const [showNew, setShowNew] = useState<boolean>(false)
+    const [selectedAlumno, setSelectedAlumno] = useState<IEstudiantes>(alumno)
 
-    const handleUpdateuuid = () => {
-        console.log(alumno.uuid)
-        alumno.uuid = crypto.randomUUID() //XD 
-        console.log(alumno.uuid)
-        putStudents(alumno)
+    const handleUpdateUUID = () => {
+        console.log(selectedAlumno.uuid)
+        const updateAlumno = { ...selectedAlumno, uuid: crypto.randomUUID(), }
+
+        setSelectedAlumno(updateAlumno)
+        console.log(selectedAlumno.uuid)
+
+        putStudents(updateAlumno)
     }
 
     const handleForm = () => {
-        console.log(alumno.nombre)
-        console.log(alumno.apellido)
-        setBanner(true)
+        console.log(selectedAlumno.nombre)
+        console.log(selectedAlumno.apellido)
+        setShowNew(true)
     }
 
-    const handleSubmit = () => {
-        console.log(alumno.nombre)
-        console.log(alumno.apellido)
-        putStudents(alumno)
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const nombre = formData.get("nombre")
+        const apellido = formData.get("apellido")
+
+        const bodyData = {
+            id: selectedAlumno.id,
+            nombre: nombre,
+            apellido: apellido,
+            uuid: selectedAlumno.uuid,
+        }
+        console.log(selectedAlumno.nombre)
+        console.log(selectedAlumno.apellido)
+        
+        setSelectedAlumno(bodyData)
+        putStudents(bodyData)
+        setShowNew(true)
     }
 
     return (
         <>
-            <div>
-                <h1>
-                    {alumno.id}{' '}
-                    {alumno.nombre}
-                    {' ' + alumno.apellido + ' '}
-                    <button
-                        onClick={() => handleForm()}>
-                        Update
-                    </button>
-                </h1>
+            <div className="divAlumnoMod">
+                <div>
+                    <h1>
+                        {selectedAlumno.id}{' '}
+                        {selectedAlumno.nombre}
+                        {' ' + selectedAlumno.apellido + ' '}
 
-                <p>
-                    {alumno.uuid + ' '}
-                    <button
-                        onClick={() => handleUpdateuuid()}>
-                        Update
-                    </button>
-                </p>
+                        < button
+                            onClick={() => handleForm()}>
+                            Update
+                        </button>
+                    </h1>
+
+                    <p>
+                        {selectedAlumno.uuid + ' '}
+                        <button
+                            onClick={handleUpdateUUID}>
+                            Update
+                        </button>
+                    </p>
+                </div>
+
                 <Link to={'/admin/alumnos'}>Atras</Link>
-            </div>
-            {banner === true ? <form onSubmit={handleSubmit}>
-                <Form_agregar />
-            </form> : null} 
+
+                {showNew != false ?
+                    <div>
+                        <form onSubmit={handleSubmit}>
+                            <Form_agregar />
+                        </form>
+                        <Button className='cancelUpdate' onClick={() => setShowNew(false)}>Cancelar</Button>
+                    </div>
+                    : null
+                }
+            </div >
+
         </>
     )
 }

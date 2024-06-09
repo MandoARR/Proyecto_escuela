@@ -41,7 +41,7 @@ export function ClasesLista() {
         const costo = formData.get("costo")
 
         const bodyData = {
-            id: selectedClase.id,
+            id: selectedClase?.id,
             nombre: nombre,
             costo: costo,
         }

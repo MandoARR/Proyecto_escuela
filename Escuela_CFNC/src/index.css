@@ -4,7 +4,18 @@
     gap: 15px;
 }
 
-.SecClases_interfaz{
+.SecClases_interfaz {
     display: flex;
     align-items: center;
+}
+
+.divAlumnoMod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cancelUpdate {
+    flex-direction: row;
 }
