@@ -2,8 +2,9 @@ import { useState, useEffect, FormEvent } from 'react';
 import { IClases } from '../../store/IClases';
 import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
-import { Button } from "@mui/material";
+import { Button } from "@mui/joy";
 import { useNavigate } from 'react-router-dom';
+import { AspectRatio, Card, CardContent, IconButton, Typography } from '@mui/joy';
 
 
 const url = "https://backend-subs-control.onrender.com/api/clase";
@@ -51,30 +52,59 @@ export function ClasesLista() {
 
     return (
         <div className='containerClase'>
-            <section>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                                <th>COSTO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {clases.map((clase) => (
-                                <tr key={clase.id}>
-                                    <td>{clase.id}</td>
-                                    <td>{clase.nombre}</td>
-                                    <td>${clase.costo}</td>
-                                    <td><button onClick={() => handleDelete(clase.id)}> X </button></td>
-                                    <td><button onClick={() => handleUpdate(clase)}> Actualizar </button></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            {clases.map((clase) => (
+                <Card sx={{ width: 320 }}>
+                    <div>
+                        <Typography level="title-md">{clase.nombre}</Typography>
+                        <IconButton
+                            aria-label="bookmark Bahamas Islands"
+                            variant="plain"
+                            color="neutral"
+                            size="sm"
+                            sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
+                        >
+
+                        </IconButton>
+                    </div>
+                    <AspectRatio minHeight="120px" maxHeight="200px">
+                        <img
+                            src="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
+                            srcSet="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
+                            loading="lazy"
+                            alt=""
+                        />
+                    </AspectRatio>
+                    <CardContent orientation="horizontal">
+                        <div>
+                            <Typography level="body-xs">Precio:</Typography>
+                            <Typography fontSize="lg" fontWeight="lg">
+                                ${clase.costo}
+                            </Typography>
+                        </div>
+                        <Button
+                            variant="solid"
+                            size="md"
+                            color="primary"
+                            aria-label="Explore Bahamas Islands"
+                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                            onClick={() => handleUpdate(clase)}
+                        >
+                            Actualizar
+                        </Button>
+                        <Button
+                            onClick={() => handleDelete(clase.id)}
+                            variant="solid"
+                            size="md"
+                            color="primary"
+                            aria-label="Explore Bahamas Islands"
+                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+
+                        >
+                            Eliminar
+                        </Button>
+                    </CardContent>
+                </Card>
+            ))}
 
             <section className='AlumnosSection'>
                 {showNew != false ?

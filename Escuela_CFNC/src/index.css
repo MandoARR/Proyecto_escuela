@@ -4,9 +4,10 @@
     gap: 15px;
 }
 
-.SecClases_interfaz {
+.divClases_interfaz {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .divAlumnoMod {

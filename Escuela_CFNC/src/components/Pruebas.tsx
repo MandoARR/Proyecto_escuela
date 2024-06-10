@@ -1,75 +1,94 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
+import { IClases } from '../../store/IClases';
+import { deleteClases, putClases } from '../../services/clases-services';
+import { FormAgregar } from './FormAgregar';
+import { Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import { deleteStudent } from '../../services/studets-services';
-import { IEstudiantes } from '../../store/IEstudiantes';
-import { getOneStudent } from '../../sections/Estudiante_interfaz';
 
-const url = "https://backend-subs-control.onrender.com/api/alumno"
+const url = "https://backend-subs-control.onrender.com/api/clase";
 
-export function Alumnos_lista() {
-    const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
+export function ClasesLista() {
+    const [clases, setClases] = useState<IClases[]>([]);
+    const [selectedClase, setSelectedClase] = useState<IClases | null>(null)
+    const [showNew, setShowNew] = useState<boolean>(false)
     const navigate = useNavigate()
 
     useEffect(() => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                setAlumnos(data);
+                setClases(data);
             })
-            .catch(error => console.error('Error fetching:', error));
     }, []);
 
     const handleDelete = (id: string) => {
-        deleteStudent(id)
+        deleteClases(id)
             .then(() => {
-                setAlumnos(alumnos.filter((alumno) => alumno.id != id))
+                setClases(clases.filter((clase) => clase.id !== id))
             })
     }
 
-    const handleIAlumno = (alumno: IEstudiantes) => {
-        getOneStudent(alumno.id)
+    const handleUpdate = (clase: IClases) => {
+        setSelectedClase(clase)
+        setShowNew(true)
     }
 
-    const handleUpdate = (alumno: IEstudiantes) => {
-        navigate('/admin/alumnos/' + alumno.id, { state: { alumno } })
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const nombre = formData.get("nombre")
+        const costo = formData.get("costo")
+
+        const bodyData = {
+            id: selectedClase?.id,
+            nombre: nombre,
+            costo: costo,
+        }
+        putClases(bodyData)
+        navigate('/admin/clasesNav')
     }
 
     return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>UUID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {alumnos.map((alumno) => (
-                        <tr key={alumno.id}>
-                            <td>{alumno.id}</td>
-                            <td>{
-                                    alumno.nombre
-                                    + ' '
-                                    + alumno.apellido
-                                }
-                            </td>
+        <div className='containerClase'>
+            <section>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>COSTO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {clases.map((clase) => (
+                                <tr key={clase.id}>
+                                    <td>{clase.id}</td>
+                                    <td>{clase.nombre}</td>
+                                    <td>${clase.costo}</td>
+                                    <td><button onClick={() => handleDelete(clase.id)}> X </button></td>
+                                    <td><button onClick={() => handleUpdate(clase)}> Actualizar </button></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-                            <td><a onClick={() => handleIAlumno(alumno)} href={'/' + alumno.uuid} target="_blank">{alumno.uuid}</a></td>
-                            <td><button onClick={() => handleDelete(alumno.id)}>X</button></td>
-                            <td><button onClick={() => handleUpdate(alumno)}>Actualizar</button></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <section className='AlumnosSection'>
+                {showNew != false ?
+                    <>
+                        <form onSubmit={handleSubmit}>
+                            <FormAgregar />
+                        </form>
+                        <section>
+                            <Button className='cancelUpdate' onClick={() => setShowNew(false)}>Cancelar</Button>
+                        </section>
+                    </>
+
+                    : null
+                }
+            </section>
         </div>
-    )
+    );
 }
-
-{/* PREGUNTAS
-
-    -Revisa el <Form_Modificar>
-    -En <Alumnos_lista> error al enviar los datos a la 
-    nueva pestaña del UUID
-
-*/}

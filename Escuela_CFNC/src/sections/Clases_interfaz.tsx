@@ -4,12 +4,12 @@ import { FormClases } from "../components/Clases/FormClases";
 export default function Clases_interfaz() {
 
   return (
-    <section className="SecClases_interfaz">
-      <div>
+    <section >
+      <div >
         <ClasesLista />
       </div>
 
-      <div>
+      <div className="divClases_interfaz">
         <FormClases />
       </div>
     </section>
