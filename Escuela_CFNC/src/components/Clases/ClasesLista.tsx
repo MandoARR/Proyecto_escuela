@@ -52,8 +52,9 @@ export function ClasesLista() {
 
     return (
         <div className='containerClase'>
+
             {clases.map((clase) => (
-                <Card sx={{ width: 320 }}>
+                <Card sx={{ width: 250 }}>
                     <div>
                         <Typography level="title-md">{clase.nombre}</Typography>
                         <IconButton
@@ -86,7 +87,7 @@ export function ClasesLista() {
                             size="md"
                             color="primary"
                             aria-label="Explore Bahamas Islands"
-                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 50 }}
                             onClick={() => handleUpdate(clase)}
                         >
                             Actualizar
@@ -97,7 +98,7 @@ export function ClasesLista() {
                             size="md"
                             color="primary"
                             aria-label="Explore Bahamas Islands"
-                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 50 }}
 
                         >
                             Eliminar
@@ -105,7 +106,6 @@ export function ClasesLista() {
                     </CardContent>
                 </Card>
             ))}
-
             <section className='AlumnosSection'>
                 {showNew != false ?
                     <>

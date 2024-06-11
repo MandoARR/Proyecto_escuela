@@ -7,7 +7,6 @@
 .divClases_interfaz {
     display: flex;
     align-items: center;
-    flex-direction: column;
 }
 
 .divAlumnoMod {
@@ -19,4 +18,9 @@
 
 .cancelUpdate {
     flex-direction: row;
+}
+
+.AlumnosSection{
+    display: flex;
+    flex-direction: row-reverse;
 }
