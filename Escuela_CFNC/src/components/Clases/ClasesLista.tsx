@@ -51,7 +51,7 @@ export function ClasesLista() {
     }
 
     return (
-        <div className='containerClase'>
+        <div>
 
             {clases.map((clase) => (
                 <Card sx={{ width: 250 }}>

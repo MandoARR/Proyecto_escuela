@@ -4,14 +4,16 @@ import { FormClases } from "../components/Clases/FormClases";
 export default function Clases_interfaz() {
 
   return (
-    <section>
-      <div >
-        <ClasesLista />
-      </div>
+    <>
+      <table>
+        <td >
+          <ClasesLista />
+        </td>
 
-      <div className="divClases_interfa">
-        <FormClases />
-      </div>
-    </section>
+        <td className="tdClases_interfa">
+          <FormClases />
+        </td>
+      </table>
+    </>
   )
 }
