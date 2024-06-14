@@ -3,6 +3,6 @@ export interface ISuscripciones{
     alumno: string,
     clase:string,
     costo:number,
-    diaPago:number, // preguntar en clase cual especificacion recomiendan
+    diaPago:string, // preguntar en clase cual especificacion recomiendan
     estado:number
 }
