@@ -6,10 +6,11 @@ export function FormAgregar() {
       <Card sx={{ maxWidth: 450 }}>
         <CardContent>
           <Stack spacing={1}>
-            <Input placeholder="Nombre de la Clase" name="nombre"></Input>
+            <Input required placeholder="Nombre de la Clase" name="nombre"></Input>
             <Input
+              required
               inputProps={{
-                inputMode: 'numeric', pattern:'[0-9]*',
+                inputMode: 'numeric', pattern: '[0-9]*',
               }}
               placeholder="Costo"
               name="costo">
