@@ -1,5 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { postClases } from "../../services/clases-services";
 import { useNavigate } from "react-router-dom";
 import { FormAgregar } from "./FormAgregar";
@@ -17,7 +17,7 @@ export function Agregar_clases() {
         postClases(body)
     }
 
-    const handleAgregarDB = (e: any) => {
+    const handleAgregarDB = (e: FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
 
