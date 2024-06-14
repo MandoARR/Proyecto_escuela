@@ -2,7 +2,7 @@ import { useState, useEffect, FormEvent } from 'react';
 import { IClases } from '../../store/IClases';
 import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
-import { Button } from "@mui/joy";
+import { Button, Sheet } from "@mui/joy";
 import { useNavigate } from 'react-router-dom';
 import { AspectRatio, Card, CardContent, IconButton, Typography } from '@mui/joy';
 
@@ -51,8 +51,7 @@ export function ClasesLista() {
     }
 
     return (
-        <div>
-
+        <Sheet sx={{overflow: 'auto'}}>
             {clases.map((clase) => (
                 <Card sx={{ width: 250 }}>
                     <div>
@@ -120,6 +119,6 @@ export function ClasesLista() {
                     : null
                 }
             </section>
-        </div>
+        </Sheet>
     );
 }
