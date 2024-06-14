@@ -16,7 +16,7 @@ export function SuscripcionesLista() {
             <h1>Suscripciones que saben a Inscripciones</h1>
             <div>
                 <Sheet>
-                    <Table aria-label="striped table">
+                    <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -30,11 +30,12 @@ export function SuscripcionesLista() {
                         <tbody>
                             {suscripciones.map((suscripcion) => (
                                 <tr key={suscripcion.id}>
+                                    <td>{suscripcion.id}</td>
                                     <td>{suscripcion.alumno}</td>
                                     <td>{suscripcion.clase}</td>
                                     <td>{suscripcion.costo}</td>
                                     <td>{suscripcion.diaPago}</td>
-                                    <td>{suscripcion.estado}</td>
+                                    <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
                                 </tr>
                             ))}
                         </tbody>
