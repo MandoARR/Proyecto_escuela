@@ -51,7 +51,7 @@ export function AlumnosModificar() {
             <div className="divAlumnoMod">
                 <div>
                     <h1>
-                        {selectedAlumno.id}{' '}
+                        {selectedAlumno.id}{' - '}
                         {selectedAlumno.nombre}
                         {' ' + selectedAlumno.apellido + ' '}
 

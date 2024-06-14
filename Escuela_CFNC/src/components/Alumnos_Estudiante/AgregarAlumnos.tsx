@@ -1,18 +1,19 @@
 import { CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { postStudents } from "../../services/studets-services";
 import { useNavigate } from "react-router-dom";
 import { Form_agregar } from "./Form_agregar";
+import { IEstudiantes } from "../../store/IEstudiantes";
 
 export function AgregarAlumnos() {
     const [loading, setLoading] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const agregarAlumnos = (body: any) => {
+    const agregarAlumnos = (body: IEstudiantes) => {
         postStudents(body)
     }
 
-    const handleAgregarDB = (e: any) => {
+    const handleAgregarDB = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setLoading(true)
