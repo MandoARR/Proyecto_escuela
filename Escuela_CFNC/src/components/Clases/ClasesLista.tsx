@@ -51,61 +51,68 @@ export function ClasesLista() {
     }
 
     return (
-        <Sheet sx={{overflow: 'auto'}}>
-            {clases.map((clase) => (
-                <Card sx={{ width: 250 }}>
-                    <div>
-                        <Typography level="title-md">{clase.nombre}</Typography>
-                        <IconButton
-                            aria-label="bookmark Bahamas Islands"
-                            variant="plain"
-                            color="neutral"
-                            size="sm"
-                            sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
-                        >
-
-                        </IconButton>
-                    </div>
-                    <AspectRatio minHeight="120px" maxHeight="200px">
-                        <img
-                            src="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
-                            srcSet="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
-                            loading="lazy"
-                            alt=""
-                        />
-                    </AspectRatio>
-                    <CardContent orientation="horizontal">
+        <>
+            <Sheet sx={{ overflow: 'auto' }}>
+                {clases.map((clase) => (
+                    <Card
+                        orientation="horizontal"
+                        sx={{
+                            width: 570,
+                            marginBottom: '1rem'
+                        }}>
+                        <AspectRatio sx={{ width: 250 }}>
+                            <img
+                                src="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
+                                srcSet="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
+                            />
+                        </AspectRatio>
                         <div>
-                            <Typography level="body-xs">Precio:</Typography>
-                            <Typography fontSize="lg" fontWeight="lg">
-                                ${clase.costo}
-                            </Typography>
-                        </div>
-                        <Button
-                            variant="solid"
-                            size="md"
-                            color="primary"
-                            aria-label="Explore Bahamas Islands"
-                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 50 }}
-                            onClick={() => handleUpdate(clase)}
-                        >
-                            Actualizar
-                        </Button>
-                        <Button
-                            onClick={() => handleDelete(clase.id)}
-                            variant="solid"
-                            size="md"
-                            color="primary"
-                            aria-label="Explore Bahamas Islands"
-                            sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 50 }}
+                            <Typography level="title-md">{clase.nombre}</Typography>
+                            <IconButton
+                                aria-label="bookmark Bahamas Islands"
+                                variant="plain"
+                                color="neutral"
+                                size="sm"
+                                sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
+                            >
+                            </IconButton>
+                            <CardContent orientation="vertical">
+                                <div>
+                                    <Typography level="body-xs">Precio:</Typography>
+                                    <Typography fontSize="lg" fontWeight="lg">
+                                        ${clase.costo}
+                                    </Typography>
+                                </div>
 
-                        >
-                            Eliminar
-                        </Button>
-                    </CardContent>
-                </Card>
-            ))}
-            <section className='AlumnosSection'>
+                                <div>
+                                    <Button
+                                        variant="solid"
+                                        size="md"
+                                        color="primary"
+                                        aria-label="Explore Bahamas Islands"
+                                        sx={{ ml:'auto', alignSelf: 'center' }}
+                                        onClick={() => handleUpdate(clase)}
+                                    >
+                                        Actualizar
+                                    </Button>
+                                    <Button
+                                        onClick={() => handleDelete(clase.id)}
+                                        variant="solid"
+                                        size="md"
+                                        color="primary"
+                                        aria-label="Explore Bahamas Islands"
+                                        sx={{ margin:'1rem', alignSelf: 'center' }}
+
+                                    >
+                                        Eliminar
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </div>
+                    </Card>
+                ))}
+            </Sheet>
+            <section>
                 {showNew != false ?
                     <>
                         <form onSubmit={handleSubmit}>
@@ -119,6 +126,6 @@ export function ClasesLista() {
                     : null
                 }
             </section>
-        </Sheet>
+        </>
     );
 }

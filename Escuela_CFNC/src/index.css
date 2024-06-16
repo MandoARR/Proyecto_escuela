@@ -28,17 +28,20 @@
 
 .divList{
     display: flex;
-    height: 90vh;
-    width: 90vh;
-    background-color: aqua;
-    justify-content: center;
+    min-height: 200px;
+    max-height: 400px;
+    min-width: 850px;
+    /* background-color: aqua; */
+    /* justify-content: center; */
+    /* justify-content: space-around; */
 }
 
 .divForm{
-    background-color: coral;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    width: 90vh;   
+    /* background-color: coral; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    min-height: 100px;
+    min-width: 250px;  
+    max-width: 300px;  
 }
