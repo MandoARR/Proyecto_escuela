@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ISuscripciones } from "../../store/ISuscripciones"
 import { getSuscriptions } from "../../services/suscriptions-services"
 import { Sheet, Table } from "@mui/joy"
+import { Button } from "@mui/material"
 
 export function SuscripcionesLista() {
     const [suscripciones, setSuscripciones] = useState<ISuscripciones[]>([])
@@ -13,7 +14,7 @@ export function SuscripcionesLista() {
 
     return (
         <>
-            <h1>Suscripciones que saben a Inscripciones</h1>
+            <Button>Agregar</Button>
             <div>
                 <Sheet>
                     <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
