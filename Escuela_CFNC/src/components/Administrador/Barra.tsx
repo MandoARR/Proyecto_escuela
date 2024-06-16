@@ -11,10 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useLoginStore } from '../store/useLoginStore';
+import { useLoginStore } from '../../store/useLoginStore';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { Link } from 'react-router-dom';
-import { orange } from '@mui/material/colors';
+import { deepPurple, orange } from '@mui/material/colors';
 
 const pages = ['ALUMNOS', 'CLASES', 'SUSCRIPCIONES', 'PAGOS'];
 
@@ -146,7 +146,7 @@ function Barra() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Cerrar Sesion">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar>AD</Avatar>
+                  <Avatar sx={{bgcolor:deepPurple[500]}}>Adm</Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
