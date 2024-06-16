@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ISuscripciones } from "../../store/ISuscripciones"
-import { getSuscriptions } from "../../services/suscriptions-services"
+import { getSuscriptions, postSuscriptions } from "../../services/suscriptions-services"
 import { Sheet, Table } from "@mui/joy"
 import { Button } from "@mui/material"
 
@@ -12,9 +12,19 @@ export function SuscripcionesLista() {
             setSuscripciones(data)
         })
 
+    const handleAdd = () => {
+        postSuscriptions
+    } 
+
     return (
         <>
-            <Button variant="contained" color="success">Agregar</Button>
+            <Button
+                variant="contained"
+                color="success"
+                onClick={handleAdd}>
+                Agregar
+            </Button>
+
             <Sheet>
                 <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
                     <thead>
@@ -41,7 +51,7 @@ export function SuscripcionesLista() {
                     </tbody>
                 </Table>
 
-                
+
             </Sheet>
         </>
     )
