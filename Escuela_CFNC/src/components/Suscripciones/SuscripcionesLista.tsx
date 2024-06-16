@@ -6,7 +6,6 @@ import { Button } from "@mui/material"
 
 export function SuscripcionesLista() {
     const [suscripciones, setSuscripciones] = useState<ISuscripciones[]>([])
-    const [open, setOpen] = useState
 
     getSuscriptions()
         .then(data => {

@@ -1,29 +1,22 @@
-import * as React from 'react';
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { IClases } from '../../store/IClases';
-import { deleteClases, putClases } from '../../services/clases-services';
+import { deleteClases, getClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
 import { Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import Modal from '@mui/joy/Modal';
 import { AspectRatio, Card, CardContent, IconButton, Typography, Sheet, ModalDialog } from '@mui/joy';
 
-
-const url = "https://backend-subs-control.onrender.com/api/clase";
-
 export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
     const [selectedClase, setSelectedClase] = useState<IClases | null>(null)
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                setClases(data);
-            })
-    }, []);
+    getClases()
+        .then(data => {
+            setClases(data)
+        })
 
     const handleDelete = (id: string) => {
         deleteClases(id)

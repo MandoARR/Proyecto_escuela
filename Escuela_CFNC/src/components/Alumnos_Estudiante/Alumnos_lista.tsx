@@ -1,26 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { deleteStudent } from '../../services/studets-services';
+import { deleteStudent, getStudents } from '../../services/studets-services';
 import { IEstudiantes } from '../../store/IEstudiantes';
 // import { getOneStudent } from '../../sections/Estudiante_interfaz';
 import Card from '@mui/joy/Card';
 import { AspectRatio, CardContent, Chip, Link, Sheet, Typography } from '@mui/joy';
 import { Button } from '@mui/material';
 
-const url = "https://backend-subs-control.onrender.com/api/alumno"
-
 export function Alumnos_lista() {
     const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                setAlumnos(data);
-            })
-            .catch(error => console.error('Error fetching:', error));
-    }, []);
+    getStudents()
+    .then(data => {
+        setAlumnos(data)
+    })
 
     const handleDelete = (id: string) => {
         deleteStudent(id)
