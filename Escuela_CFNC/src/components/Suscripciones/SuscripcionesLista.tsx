@@ -6,6 +6,7 @@ import { Button } from "@mui/material"
 
 export function SuscripcionesLista() {
     const [suscripciones, setSuscripciones] = useState<ISuscripciones[]>([])
+    const [open, setOpen] = useState
 
     getSuscriptions()
         .then(data => {
@@ -14,7 +15,7 @@ export function SuscripcionesLista() {
 
     return (
         <>
-            <Button>Agregar</Button>
+            <Button variant="contained" color="success">Agregar</Button>
             <Sheet>
                 <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
                     <thead>
@@ -40,6 +41,8 @@ export function SuscripcionesLista() {
                         ))}
                     </tbody>
                 </Table>
+
+                
             </Sheet>
         </>
     )
