@@ -11,10 +11,6 @@
     gap: 15px;
 }
 
-.cancelUpdate {
-    flex-direction: row;
-}
-
 .AlumnosSection{
     display: flex;
     flex-direction: row-reverse;
@@ -22,26 +18,20 @@
 
 .secIterface{
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 
-.divList{
-    display: flex;
-    min-height: 200px;
-    max-height: 400px;
-    min-width: 850px;
-    /* background-color: aqua; */
-    /* justify-content: center; */
-    /* justify-content: space-around; */
-}
+/* .divList{
+   background-color: darkorchid;
+} */
 
 .divForm{
-    /* background-color: coral; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    min-height: 100px;
-    min-width: 250px;  
-    max-width: 300px;  
+    /* background-color: darkcyan; */
+    min-width: 250px;
+}
+
+.secUpdateClases{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
 }

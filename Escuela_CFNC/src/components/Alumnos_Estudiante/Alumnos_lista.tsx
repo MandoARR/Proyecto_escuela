@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteStudent } from '../../services/studets-services';
 import { IEstudiantes } from '../../store/IEstudiantes';
-import { getOneStudent } from '../../sections/Estudiante_interfaz';
+// import { getOneStudent } from '../../sections/Estudiante_interfaz';
 import Card from '@mui/joy/Card';
-import { AspectRatio, CardContent, Chip, Link, Typography } from '@mui/joy';
+import { AspectRatio, CardContent, Chip, Link, Sheet, Typography } from '@mui/joy';
 import { Button } from '@mui/material';
 
 const url = "https://backend-subs-control.onrender.com/api/alumno"
@@ -30,16 +30,16 @@ export function Alumnos_lista() {
     }
 
     // Se realizara una interfaz para el alumno cuando se le entregue su UUID
-    const handleIAlumno = (alumno: IEstudiantes) => {
-        getOneStudent(alumno.id)
-    }
+    // const handleIAlumno = (alumno: IEstudiantes) => {
+    //     getOneStudent(alumno.id)
+    // }
 
     const handleUpdate = (alumno: IEstudiantes) => {
         navigate('/admin/alumnos/' + alumno.id, { state: { alumno } })
     }
 
     return (
-        <div>
+        <Sheet sx={{height:700, overflow:'auto'}}> {/*Se Asigna la altura y agrega automaticamente la barra*/}
             {alumnos.map((alumno) => (
                 <Card
                 key={alumno.id}
@@ -79,9 +79,8 @@ export function Alumnos_lista() {
                         </Chip>
                         <Button onClick={() => handleDelete(alumno.id)}>Eliminar</Button>
                     </CardContent>
-                    
                 </Card>
             ))}
-        </div>
+        </Sheet>
     )
 }

@@ -1,10 +1,12 @@
+import * as React from 'react';
 import { useState, useEffect, FormEvent } from 'react';
 import { IClases } from '../../store/IClases';
 import { deleteClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
-import { Button, Sheet } from "@mui/joy";
+import { Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import { AspectRatio, Card, CardContent, IconButton, Typography } from '@mui/joy';
+import Modal from '@mui/joy/Modal';
+import { AspectRatio, Card, CardContent, IconButton, Typography, Sheet, ModalDialog } from '@mui/joy';
 
 
 const url = "https://backend-subs-control.onrender.com/api/clase";
@@ -12,7 +14,7 @@ const url = "https://backend-subs-control.onrender.com/api/clase";
 export function ClasesLista() {
     const [clases, setClases] = useState<IClases[]>([]);
     const [selectedClase, setSelectedClase] = useState<IClases | null>(null)
-    const [showNew, setShowNew] = useState<boolean>(false)
+    const [open, setOpen] = React.useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -32,7 +34,7 @@ export function ClasesLista() {
 
     const handleUpdate = (clase: IClases) => {
         setSelectedClase(clase)
-        setShowNew(true)
+        setOpen(true)
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -46,13 +48,13 @@ export function ClasesLista() {
             nombre: nombre,
             costo: costo,
         }
-        putClases(bodyData)
+        putClases(bodyData) //QUEDA PENDIENTE REVISAR PORQUE MARCA ERROR
         navigate('/admin/clasesNav')
     }
 
     return (
         <>
-            <Sheet sx={{ overflow: 'auto' }}>
+            <Sheet sx={{ height: 700, overflow: 'auto' }}>
                 {clases.map((clase) => (
                     <Card
                         orientation="horizontal"
@@ -63,7 +65,6 @@ export function ClasesLista() {
                         <AspectRatio sx={{ width: 250 }}>
                             <img
                                 src="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
-                                srcSet="https://www.pngitem.com/pimgs/m/8-81474_music-studio-logo-design-circle-music-logo-design.png"
                             />
                         </AspectRatio>
                         <div>
@@ -86,22 +87,22 @@ export function ClasesLista() {
 
                                 <div>
                                     <Button
-                                        variant="solid"
-                                        size="md"
+                                        variant="text"
+                                        size="medium"
                                         color="primary"
                                         aria-label="Explore Bahamas Islands"
-                                        sx={{ ml:'auto', alignSelf: 'center' }}
+                                        sx={{ ml: 'auto', alignSelf: 'center' }}
                                         onClick={() => handleUpdate(clase)}
                                     >
                                         Actualizar
                                     </Button>
                                     <Button
                                         onClick={() => handleDelete(clase.id)}
-                                        variant="solid"
-                                        size="md"
+                                        variant="text"
+                                        size="medium"
                                         color="primary"
                                         aria-label="Explore Bahamas Islands"
-                                        sx={{ margin:'1rem', alignSelf: 'center' }}
+                                        sx={{ margin: '1rem', alignSelf: 'center' }}
 
                                     >
                                         Eliminar
@@ -112,20 +113,24 @@ export function ClasesLista() {
                     </Card>
                 ))}
             </Sheet>
-            <section>
-                {showNew != false ?
-                    <>
-                        <form onSubmit={handleSubmit}>
-                            <FormAgregar />
-                        </form>
+            <Modal open={open} onClose={() => setOpen(false)}>
+                <section className='secUpdateClases'>
+                    <ModalDialog>
                         <section>
-                            <Button className='cancelUpdate' onClick={() => setShowNew(false)}>Cancelar</Button>
-                        </section>
-                    </>
+                            <form onSubmit={handleSubmit}>
+                                <FormAgregar />
 
-                    : null
-                }
-            </section>
+                                <Button
+                                    color='error'
+                                    onClick={() => setOpen(false)}
+                                >
+                                    Cancelar
+                                </Button>
+                            </form>
+                        </section>
+                    </ModalDialog>
+                </section>
+            </Modal>
         </>
     );
 }
