@@ -15,35 +15,32 @@ export function SuscripcionesLista() {
     return (
         <>
             <Button>Agregar</Button>
-            <div>
-                <Sheet>
-                    <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>ALUMNO</th>
-                                <th>CLASE</th>
-                                <th>COSTO</th>
-                                <th>DIA DE PAGO</th>
-                                <th>ESTADO</th>
+            <Sheet>
+                <Table stripe="odd" aria-label="striped table" sx={{ textAlign: 'left' }}>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ALUMNO</th>
+                            <th>CLASE</th>
+                            <th>COSTO</th>
+                            <th>DIA DE PAGO</th>
+                            <th>ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {suscripciones.map((suscripcion) => (
+                            <tr key={suscripcion.id}>
+                                <td>{suscripcion.id}</td>
+                                <td>{suscripcion.alumno}</td>
+                                <td>{suscripcion.clase}</td>
+                                <td>{suscripcion.costo}</td>
+                                <td>{suscripcion.diaPago}</td>
+                                <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {suscripciones.map((suscripcion) => (
-                                <tr key={suscripcion.id}>
-                                    <td>{suscripcion.id}</td>
-                                    <td>{suscripcion.alumno}</td>
-                                    <td>{suscripcion.clase}</td>
-                                    <td>{suscripcion.costo}</td>
-                                    <td>{suscripcion.diaPago}</td>
-                                    <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </Sheet>
-
-            </div>
+                        ))}
+                    </tbody>
+                </Table>
+            </Sheet>
         </>
     )
 }
