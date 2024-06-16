@@ -12,6 +12,7 @@ import { Admin_layout } from './Administrador/Admin_layout'
 import { AlumnosLayout } from './Alumnos_Estudiante/AlumnosLayout'
 import { AlumnosNavigate } from './Alumnos_Estudiante/AlumnosNavigate'
 import { ClasesNavigate } from './Clases/ClasesNavigate'
+import { SuscripcionNavigate } from './Suscripciones/SuscripcionNavigate'
 
 export function Rutas() {
     return (
@@ -22,6 +23,7 @@ export function Rutas() {
                     <Route path="/admin" element={<Admin_interfaz />} />
                     <Route path="/admin/AlumnosNav" element={<AlumnosNavigate/>} />
                     <Route path="/admin/ClasesNav" element={<ClasesNavigate />} />
+                    <Route path="/admin/SuscripNav" element={<SuscripcionNavigate />} />
 
                     <Route element={<Admin_layout />}>
                         <Route path="/admin/alumnos" element={<Alumnos_interfaz />} />
