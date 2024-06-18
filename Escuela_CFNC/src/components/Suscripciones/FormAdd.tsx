@@ -51,4 +51,38 @@ export function FormAdd() {
       </Card>
     </>
   )
+  // return (
+  //   <>
+  //     <Card sx={{ maxWidth: 450 }}>
+  //       <CardContent>
+  //         <Stack spacing={1}>
+  //           {/* <Input required placeholder="Alumno" name="alumno"></Input>*/}
+  //           <Autocomplete options={alumnos} required placeholder="ID Alumno" name="alumno"></Autocomplete>
+  //           {/* <Input required placeholder="Clase" name="clase"></Input> */}
+  //           <Autocomplete
+  //             required
+  //             placeholder="Clase"
+  //             name="Clase"
+  //             options={clases.map((element:IClases) => {
+  //               element.id
+  //             })} 
+  //             // onChange={() => handleCosto(clases.costo)}
+  //             >
+  //           </Autocomplete>
+  //           <Input required placeholder="Costo " name="costo"></Input>
+  //           <Input required type="date" name="diaPago"></Input>
+  //           <Button type="submit">Agregar</Button>
+  //         </Stack>
+  //       </CardContent>
+  //     </Card>
+  //   </>
+  // )
 }
+
+
+
+
+/* ::::::NOTA:::::: 
+se podria intentar utilizar modal para realizar la validacion de costo al seleccionar la ID de la clase
+
+*/
