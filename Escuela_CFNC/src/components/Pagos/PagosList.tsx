@@ -23,7 +23,7 @@ export function PagosList() {
                     <th>DIA DE PAGO</th>
                 </thead>
                 <tbody>
-                    {pagos.map((pago) => (
+                    {pagos.reverse().map((pago) => (
                         <tr key={pago.id}>
                             <td>{pago.id}</td>
                             <td>{pago.alumno}</td>

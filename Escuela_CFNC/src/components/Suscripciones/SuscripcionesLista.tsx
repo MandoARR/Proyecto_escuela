@@ -8,6 +8,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from "@mui/material"
 import { FormAdd } from "./FormAdd";
 import { useNavigate } from "react-router-dom";
+import { IPagos } from "../../store/IPagos";
+import { postPayment } from "../../services/pagos-services";
 
 export function SuscripcionesLista() {
     const [suscripciones, setSuscripciones] = useState<ISuscripciones[]>([])
@@ -25,9 +27,11 @@ export function SuscripcionesLista() {
         const alumno = formData.get("alumno")
         const clase = formData.get("clase")
         const costo = formData.get("costo")
+        const pago = formData.get("costo")
         const diaPago = formData.get("diaPago")
+        const fechaPago = formData.get("diaPago")
 
-        const bodyData = {
+        const bodyDataSuscriptions = {
             alumno: alumno,
             clase: clase,
             costo: costo,
@@ -35,8 +39,16 @@ export function SuscripcionesLista() {
             estado: '1',
         }
 
-        postSuscriptions(bodyData)
-        navigate('/admin/SuscripNav')
+        const bodyDataPayment = {
+            alumno: alumno,
+            clase: clase,
+            pago: pago,
+            fechaPago: fechaPago,
+        }
+
+        postSuscriptions(bodyDataSuscriptions)
+        postPayment(bodyDataPayment)
+        navigate('/admin/pagos')
     }
 
     const handleDelete = (id:string) => {
@@ -65,7 +77,7 @@ export function SuscripcionesLista() {
                         </tr>
                     </thead>
                     <tbody>
-                        {suscripciones.map((suscripcion) => (
+                        {suscripciones.reverse().map((suscripcion) => (
                             <tr key={suscripcion.id}>
                                 <td>{suscripcion.id}</td>
                                 <td>{suscripcion.alumno}</td>
