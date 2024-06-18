@@ -7,7 +7,8 @@ import { IClases } from "../../store/IClases";
 
 export function FormAdd() {
   const [alumnos, setAlumnos] = useState<string[]>([])
-  const [clases, setClases] = useState<IClases[]>([])
+  // const [clases, setClases] = useState<IClases[]>([])
+  const [clases, setClases] = useState<string[]>([])
   const [selectedClase, setSelectedClase] = useState<number>()
 
   getStudents()
@@ -18,8 +19,14 @@ export function FormAdd() {
 
   getClases()
     .then((data) => {
-      setClases(data)
+      const idClases = data.map((element: { id: string }) => element.id)
+      setClases(idClases)
     })
+
+  // getClases()
+  //   .then((data) => {
+  //     setClases(data)
+  //   })
 
   const handleCosto = (costo: number) => {
     setSelectedClase(costo)
@@ -34,14 +41,12 @@ export function FormAdd() {
             <Autocomplete options={alumnos} required placeholder="ID Alumno" name="alumno"></Autocomplete>
             {/* <Input required placeholder="Clase" name="clase"></Input> */}
             <Autocomplete
+              options={clases}
               required
-              placeholder="Clase"
-              name="Clase"
-              options={clases.map(element => {
-                element.id
-              })} 
-              // onChange={() => handleCosto(clases.costo)}
-              >
+              placeholder="ID Clase"
+              name="clase"
+            // onChange={() => handleCosto(clases.costo)}
+            >
             </Autocomplete>
             <Input required placeholder="Costo " name="costo"></Input>
             <Input required type="date" name="diaPago"></Input>
