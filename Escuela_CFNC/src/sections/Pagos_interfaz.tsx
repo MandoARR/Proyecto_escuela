@@ -1,7 +1,9 @@
+import { PagosList } from "../components/Pagos/PagosList";
+
 export function Pagos_interfaz() {
     return (
         <>
-            <h1>Pagos !</h1>
+            <PagosList/>
         </>
     )
 }
