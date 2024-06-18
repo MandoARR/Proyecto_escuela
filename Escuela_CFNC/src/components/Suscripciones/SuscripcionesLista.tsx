@@ -8,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from "@mui/material"
 import { FormAdd } from "./FormAdd";
 import { useNavigate } from "react-router-dom";
-import { IPagos } from "../../store/IPagos";
 import { postPayment } from "../../services/pagos-services";
 
 export function SuscripcionesLista() {
@@ -82,7 +81,7 @@ export function SuscripcionesLista() {
                                 <td>{suscripcion.id}</td>
                                 <td>{suscripcion.alumno}</td>
                                 <td>{suscripcion.clase}</td>
-                                <td>{suscripcion.costo}</td>
+                                <td>${suscripcion.costo}</td>
                                 <td>{suscripcion.diaPago}</td>
                                 <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
                                 <td>

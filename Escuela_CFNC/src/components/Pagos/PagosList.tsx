@@ -20,7 +20,7 @@ export function PagosList() {
                     <th>ALUMNO</th>
                     <th>CLASE</th>
                     <th>PAGO</th>
-                    <th>DIA DE PAGO</th>
+                    <th>FECHA DE PAGO</th>
                 </thead>
                 <tbody>
                     {pagos.reverse().map((pago) => (
@@ -28,7 +28,7 @@ export function PagosList() {
                             <td>{pago.id}</td>
                             <td>{pago.alumno}</td>
                             <td>{pago.clase}</td>
-                            <td>{pago.pago}</td>
+                            <td>${pago.pago}</td>
                             <td>{pago.fechaPago}</td>
                         </tr>
                     ))}
