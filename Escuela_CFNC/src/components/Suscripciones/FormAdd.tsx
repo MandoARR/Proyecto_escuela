@@ -21,9 +21,9 @@ export function FormAdd() {
       setClases(data)
     })
 
-    const handleCosto = (costo:number) => {
-      setSelectedClase(costo)
-    } 
+  const handleCosto = (costo: number) => {
+    setSelectedClase(costo)
+  }
 
   return (
     <>
@@ -39,7 +39,10 @@ export function FormAdd() {
               name="Clase"
               options={clases.map(element => {
                 element.id
-              })} onChange={() => handleCosto(clases.costo)}></Autocomplete>
+              })} 
+              // onChange={() => handleCosto(clases.costo)}
+              >
+            </Autocomplete>
             <Input required placeholder="Costo " name="costo"></Input>
             <Input required type="date" name="diaPago"></Input>
             <Button type="submit">Agregar</Button>
