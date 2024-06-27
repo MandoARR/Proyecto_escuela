@@ -1,35 +1,49 @@
 import { Autocomplete, Input } from "@mui/joy";
 import { Button, Card, CardContent, Stack } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getStudents } from "../../services/studets-services";
 import { getClases } from "../../services/clases-services";
 import { IClases } from "../../store/IClases";
+import { IEstudiantes } from "../../store/IEstudiantes";
+
+interface IOptions {
+  id: string,
+  label: string
+}
 
 export function FormAdd() {
   const [alumnos, setAlumnos] = useState<string[]>([])
-  // const [clases, setClases] = useState<IClases[]>([])
-  const [clases, setClases] = useState<string[]>([])
+  const [clases, setClases] = useState<IClases[]>([])
+  const [clasesOptions, setClasesOptions] = useState<IOptions[]>([])
   const [selectedClase, setSelectedClase] = useState<number>()
 
-  getStudents()
-    .then((data) => {
-      const idAlumnos = data.map((element: { id: string }) => element.id)
-      setAlumnos(idAlumnos)
-    })
+  useEffect(() => {
+    getStudents()
+      .then((data: IEstudiantes[]) => {
+        const idEstudiantes = data.map((element: IEstudiantes) =>
+          (element.id + "-" + element.nombre))
+        setAlumnos(idEstudiantes)
+      })
 
-  getClases()
-    .then((data) => {
-      const idClases = data.map((element: { id: string }) => element.id)
-      setClases(idClases)
-    })
+    getClases()
+      .then((data: IClases[]) => {
+        const idClases = data.map((element: IClases) =>
+          ({ id: element.id, label: element.id + "-" + element.nombre }))
+        setClasesOptions(idClases)
+        setClases(data)
+      })
+  }, [])
+
 
   // getClases()
   //   .then((data) => {
   //     setClases(data)
   //   })
 
-  const handleCosto = (costo: number) => {
-    setSelectedClase(costo)
+  const handleClaseChange = (e: any, newValue: IOptions) => {
+    console.log(newValue)
+    const selectedClaseS = clases.find((clase:IClases) => clase.id === newValue.id )
+    setSelectedClase(selectedClaseS?.costo)
   }
 
   return (
@@ -41,11 +55,11 @@ export function FormAdd() {
             <Autocomplete options={alumnos} required placeholder="ID Alumno" name="alumno"></Autocomplete>
             {/* <Input required placeholder="Clase" name="clase"></Input> */}
             <Autocomplete
-              options={clases}
+              options={clasesOptions}
               required
               placeholder="ID Clase"
               name="clase"
-            // onChange={() => handleCosto(clases.costo)}
+              onChange={handleClaseChange}
             >
             </Autocomplete>
             <Input required placeholder="Costo " name="costo"></Input>
@@ -71,7 +85,7 @@ export function FormAdd() {
   //             options={clases.map((element:IClases) => {
   //               element.id
   //             })} 
-  //             // onChange={() => handleCosto(clases.costo)}
+  //             // onClick={() => handleCosto(clases.costo)}
   //             >
   //           </Autocomplete>
   //           <Input required placeholder="Costo " name="costo"></Input>
@@ -86,8 +100,6 @@ export function FormAdd() {
 
 
 
-
 /* ::::::NOTA:::::: 
 se podria intentar utilizar modal para realizar la validacion de costo al seleccionar la ID de la clase
-
 */

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { ISuscripciones } from "../../store/ISuscripciones"
 import { deleteSuscriptions, getSuscriptions, postSuscriptions } from "../../services/suscriptions-services"
 import { ModalDialog, Sheet, Table } from "@mui/joy"
@@ -15,10 +15,13 @@ export function SuscripcionesLista() {
     const [showNew, setShowNew] = useState<boolean>(false)
     const navigate = useNavigate()
 
-    getSuscriptions()
-        .then(data => {
-            setSuscripciones(data)
-        })
+    useEffect(() => {
+        getSuscriptions()
+            .then(data => {
+                setSuscripciones(data)
+            })
+    },[])
+
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -50,7 +53,7 @@ export function SuscripcionesLista() {
         navigate('/admin/pagos')
     }
 
-    const handleDelete = (id:string) => {
+    const handleDelete = (id: string) => {
         deleteSuscriptions(id)
     }
 
@@ -86,7 +89,7 @@ export function SuscripcionesLista() {
                                 <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
                                 <td>
                                     <IconButton onClick={() => handleDelete(suscripcion.id)}>
-                                        <DeleteIcon/>
+                                        <DeleteIcon />
                                     </IconButton>
                                 </td>
                             </tr>
