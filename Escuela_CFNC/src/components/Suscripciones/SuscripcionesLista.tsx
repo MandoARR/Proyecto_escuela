@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { ISuscripciones } from "../../store/ISuscripciones"
 import { deleteSuscriptions, getSuscriptions, postSuscriptions } from "../../services/suscriptions-services"
 import { ModalDialog, Sheet, Table } from "@mui/joy"
@@ -8,16 +8,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from "@mui/material"
 import { FormAdd } from "./FormAdd";
 import { useNavigate } from "react-router-dom";
+import { postPayment } from "../../services/pagos-services";
 
 export function SuscripcionesLista() {
     const [suscripciones, setSuscripciones] = useState<ISuscripciones[]>([])
     const [showNew, setShowNew] = useState<boolean>(false)
     const navigate = useNavigate()
 
-    getSuscriptions()
-        .then(data => {
-            setSuscripciones(data)
-        })
+    useEffect(() => {
+        getSuscriptions()
+            .then(data => {
+                setSuscripciones(data)
+            })
+    },[])
+
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -25,9 +29,11 @@ export function SuscripcionesLista() {
         const alumno = formData.get("alumno")
         const clase = formData.get("clase")
         const costo = formData.get("costo")
+        const pago = formData.get("costo")
         const diaPago = formData.get("diaPago")
+        const fechaPago = formData.get("diaPago")
 
-        const bodyData = {
+        const bodyDataSuscriptions = {
             alumno: alumno,
             clase: clase,
             costo: costo,
@@ -35,11 +41,19 @@ export function SuscripcionesLista() {
             estado: '1',
         }
 
-        postSuscriptions(bodyData)
-        navigate('/admin/SuscripNav')
+        const bodyDataPayment = {
+            alumno: alumno,
+            clase: clase,
+            pago: pago,
+            fechaPago: fechaPago,
+        }
+
+        postSuscriptions(bodyDataSuscriptions)
+        postPayment(bodyDataPayment)
+        navigate('/admin/pagos')
     }
 
-    const handleDelete = (id:string) => {
+    const handleDelete = (id: string) => {
         deleteSuscriptions(id)
     }
 
@@ -65,17 +79,17 @@ export function SuscripcionesLista() {
                         </tr>
                     </thead>
                     <tbody>
-                        {suscripciones.map((suscripcion) => (
+                        {suscripciones.reverse().map((suscripcion) => (
                             <tr key={suscripcion.id}>
                                 <td>{suscripcion.id}</td>
                                 <td>{suscripcion.alumno}</td>
                                 <td>{suscripcion.clase}</td>
-                                <td>{suscripcion.costo}</td>
+                                <td>${suscripcion.costo}</td>
                                 <td>{suscripcion.diaPago}</td>
                                 <td>{suscripcion.estado != 0 ? "ACTIVO" : "INACTIVO"}</td>
                                 <td>
                                     <IconButton onClick={() => handleDelete(suscripcion.id)}>
-                                        <DeleteIcon/>
+                                        <DeleteIcon />
                                     </IconButton>
                                 </td>
                             </tr>

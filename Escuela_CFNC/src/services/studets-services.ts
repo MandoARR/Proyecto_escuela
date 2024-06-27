@@ -11,7 +11,7 @@ export async function getStudents(){
 export async function postStudents(body:IEstudiantes){
     const response = await fetch(BASE_URL,{
         method: 'POST',
-        body : JSON.stringify(body),//payload
+        body : JSON.stringify(body),
         headers: {
             "Content-Type": "application/json"
           }
