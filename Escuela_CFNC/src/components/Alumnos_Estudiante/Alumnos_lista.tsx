@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteStudent, getStudents } from '../../services/studets-services';
 import { IEstudiantes } from '../../store/IEstudiantes';
@@ -11,10 +11,13 @@ export function Alumnos_lista() {
     const [alumnos, setAlumnos] = useState<IEstudiantes[]>([]);
     const navigate = useNavigate();
 
-    getStudents()
-    .then(data => {
-        setAlumnos(data)
-    })
+    useEffect(() => {
+        getStudents()
+            .then(data => {
+                setAlumnos(data)
+            })
+    }, [])
+
 
     const handleDelete = (id: string) => {
         deleteStudent(id)
@@ -33,10 +36,10 @@ export function Alumnos_lista() {
     }
 
     return (
-        <Sheet sx={{height:700, overflow:'auto'}}> {/*Se Asigna la altura y agrega automaticamente la barra*/}
+        <Sheet sx={{ height: 700, overflow: 'auto' }}> {/*Se Asigna la altura y agrega automaticamente la barra*/}
             {alumnos.map((alumno) => (
                 <Card
-                key={alumno.id}
+                    key={alumno.id}
                     variant="outlined"
                     orientation="horizontal"
                     sx={{

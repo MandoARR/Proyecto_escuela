@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { IPagos } from "../../store/IPagos"
 import { getPayment } from "../../services/pagos-services"
 import { Sheet, Table } from "@mui/joy"
@@ -6,10 +6,12 @@ import { Sheet, Table } from "@mui/joy"
 export function PagosList() {
     const [pagos, setPagos] = useState<IPagos[]>([])
 
-    getPayment()
-        .then(data => {
-            setPagos(data)
-        })
+    useEffect(() => {
+        getPayment()
+            .then(data => {
+                setPagos(data)
+            })
+    })
 
     return (
         <Sheet>

@@ -20,7 +20,7 @@ export function SuscripcionesLista() {
             .then(data => {
                 setSuscripciones(data)
             })
-    },[])
+    }, [])
 
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

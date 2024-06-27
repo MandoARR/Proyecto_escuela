@@ -8,7 +8,7 @@ export function AlumnosDetalles() {
             </div>
 
             <div>
-                {/* Agregar componente con la lista de las clases rgistradas del */}
+                {/* Agregar componente con la lista de las clases rgistradas del Alumno*/}
             </div>
         </section>
     )

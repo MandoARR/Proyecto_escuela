@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { IClases } from '../../store/IClases';
 import { deleteClases, getClases, putClases } from '../../services/clases-services';
 import { FormAgregar } from './FormAgregar';
@@ -13,10 +13,12 @@ export function ClasesLista() {
     const [open, setOpen] = useState(false)
     const navigate = useNavigate()
 
-    getClases()
-        .then(data => {
-            setClases(data)
-        })
+    useEffect(() => {
+        getClases()
+            .then(data => {
+                setClases(data)
+            })
+    })
 
     const handleDelete = (id: string) => {
         deleteClases(id)
