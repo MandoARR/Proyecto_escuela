@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { IPagos } from "../../store/IPagos"
-import { getPayment } from "../../services/pagos-services"
-import { Sheet, Table } from "@mui/joy"
+import { deletePayment, getPayment } from "../../services/pagos-services"
+import { IconButton, Sheet, Table } from "@mui/joy"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export function PagosList() {
     const [pagos, setPagos] = useState<IPagos[]>([])
@@ -12,6 +13,10 @@ export function PagosList() {
                 setPagos(data)
             })
     })
+
+    const handleDelete = (id: string) => {
+        deletePayment(id)
+    }
 
     return (
         <Sheet>
@@ -32,6 +37,11 @@ export function PagosList() {
                             <td>{pago.clase}</td>
                             <td>${pago.pago}</td>
                             <td>{pago.fechaPago}</td>
+                            <td>
+                                <IconButton onClick={() => handleDelete(pago.id)}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

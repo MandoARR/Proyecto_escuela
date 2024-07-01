@@ -15,7 +15,7 @@ export function FormAdd() {
   const [alumnos, setAlumnos] = useState<string[]>([])
   const [clases, setClases] = useState<IClases[]>([])
   const [clasesOptions, setClasesOptions] = useState<IOptions[]>([])
-  const [selectedClase, setSelectedClase] = useState<number>()
+  const [selectedClase, setSelectedClase] = useState<number>(0)
 
   useEffect(() => {
     getStudents()
@@ -34,15 +34,9 @@ export function FormAdd() {
       })
   }, [])
 
-
-  // getClases()
-  //   .then((data) => {
-  //     setClases(data)
-  //   })
-
   const handleClaseChange = (e: any, newValue: IOptions) => {
     console.log(newValue)
-    const selectedClaseS = clases.find((clase:IClases) => clase.id === newValue.id )
+    const selectedClaseS = clases.find((clase: IClases) => clase.id === newValue.id)
     setSelectedClase(selectedClaseS?.costo)
   }
 
@@ -51,9 +45,7 @@ export function FormAdd() {
       <Card sx={{ maxWidth: 450 }}>
         <CardContent>
           <Stack spacing={1}>
-            {/* <Input required placeholder="Alumno" name="alumno"></Input>*/}
             <Autocomplete options={alumnos} required placeholder="ID Alumno" name="alumno"></Autocomplete>
-            {/* <Input required placeholder="Clase" name="clase"></Input> */}
             <Autocomplete
               options={clasesOptions}
               required
@@ -62,8 +54,10 @@ export function FormAdd() {
               onChange={handleClaseChange}
             >
             </Autocomplete>
-            <Input required placeholder="Costo " name="costo"></Input>
-            <Input required type="date" name="diaPago"></Input>
+            <div key={selectedClase}>
+              <Input defaultValue={selectedClase} required placeholder="Costo" name="costo"></Input>
+            </div>
+            <Input required type="date" name="fecha"></Input>
             <Button type="submit">Agregar</Button>
           </Stack>
         </CardContent>

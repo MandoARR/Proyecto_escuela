@@ -30,14 +30,16 @@ export function SuscripcionesLista() {
         const clase = formData.get("clase")
         const costo = formData.get("costo")
         const pago = formData.get("costo")
-        const diaPago = formData.get("diaPago")
-        const fechaPago = formData.get("diaPago")
+        const fecha = formData.get("fecha") as string
+
+        const diaPago = fecha.split('-')[2]
+        const fechaPago = fecha.split('-').reverse().join('/')
 
         const bodyDataSuscriptions = {
             alumno: alumno,
             clase: clase,
             costo: costo,
-            diaPago: diaPago,
+            diaPago: ('Los dias '+ diaPago + ' del mes'),
             estado: '1',
         }
 
