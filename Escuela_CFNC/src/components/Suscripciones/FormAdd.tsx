@@ -21,14 +21,14 @@ export function FormAdd() {
     getStudents()
       .then((data: IEstudiantes[]) => {
         const idEstudiantes = data.map((element: IEstudiantes) =>
-          (element.id + "-" + element.nombre))
+          (element.nombre + " - " + element.id))
         setAlumnos(idEstudiantes)
       })
 
     getClases()
       .then((data: IClases[]) => {
         const idClases = data.map((element: IClases) =>
-          ({ id: element.id, label: element.id + "-" + element.nombre }))
+          ({ id: element.id, label: element.nombre + " - " + element.id }))
         setClasesOptions(idClases)
         setClases(data)
       })
@@ -45,12 +45,12 @@ export function FormAdd() {
       <Card sx={{ maxWidth: 450 }}>
         <CardContent>
           <Stack spacing={1}>
-            <Autocomplete options={alumnos} required placeholder="ID Alumno" name="alumno"></Autocomplete>
+            <Autocomplete options={alumnos} required placeholder="Nombre - ID" name="alumnoId"></Autocomplete>
             <Autocomplete
               options={clasesOptions}
               required
-              placeholder="ID Clase"
-              name="clase"
+              placeholder="Clase - ID"
+              name="claseId"
               onChange={handleClaseChange}
             >
             </Autocomplete>
